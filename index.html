@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lucas B. Xavier — Marketing Researcher</title>
+  <meta name="description" content="PhD candidate and marketing researcher. Technology consumption, games, affordances, flow. Projects, publications, CV, and study participation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* Dracula palette */
+      --bg: #282a36;
+      --bg-panel: #1e2029; /* custom darker panel */
+      --current: #44475a;
+      --fg: #f8f8f2;
+      --comment: #6272a4;
+      --cyan: #8be9fd;
+      --green: #50fa7b;
+      --orange: #ffb86c;
+      --pink: #ff79c6;
+      --purple: #bd93f9;
+      --red: #ff5555;
+      --yellow: #f1fa8c;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Fira Code", SFMono-Regular, Consolas, Menlo, Monaco, "Liberation Mono", monospace;
+      color:var(--fg);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{color:var(--cyan); text-decoration:none}
+    a:hover{text-decoration:underline}
+    /* VS Code-like frame */
+    .app{display:grid; grid-template-columns:56px 1fr; grid-template-rows:36px 1fr; height:100vh;}
+    .titlebar{grid-column:1/3; grid-row:1; display:flex; align-items:center; gap:.75rem; padding:0 .75rem; background:var(--bg-panel); border-bottom:1px solid var(--current)}
+    .titlebar .dot{width:10px; height:10px; border-radius:50%}
+    .dot.red{background:var(--red)} .dot.yellow{background:var(--yellow)} .dot.green{background:var(--green)}
+    .titlebar .title{font-weight:600; letter-spacing:.3px; color:var(--comment)}
+
+    .sidebar{grid-column:1; grid-row:2; background:#1c1e26; border-right:1px solid var(--current); display:flex; flex-direction:column; align-items:center; padding:.5rem 0; gap:.35rem}
+    .sidebtn{width:40px; height:40px; display:grid; place-items:center; border-radius:8px; color:var(--comment); cursor:pointer}
+    .sidebtn.active, .sidebtn:hover{background:var(--current); color:var(--fg)}
+    .sidebtn svg{width:20px; height:20px;}
+    .main{grid-column:2; grid-row:2; display:grid; grid-template-rows:40px 1fr}
+
+    .tabs{display:flex; align-items:center; gap:2px; padding:0 .5rem; background:#20222c; border-bottom:1px solid var(--current)}
+    .tab{padding:.45rem .7rem; background:#232634; color:var(--comment); border-top-left-radius:6px; border-top-right-radius:6px; cursor:pointer; border:1px solid var(--current); border-bottom:none}
+    .tab.active{background:#2a2d3a; color:var(--fg)}
+
+    .editor{position:relative; height:100%; overflow:auto;}
+    .editor-inner{display:grid; grid-template-columns:48px 1fr; min-height:100%;}
+    .gutter{background:#232634; color:var(--comment); padding:.75rem .5rem; border-right:1px solid var(--current)}
+    .gutter .ln{display:block; height:24px}
+    .content{padding:1rem 1.5rem; background:#2a2d3a;}
+    .panel{max-width:980px; margin:0 auto; line-height:1.6}
+    .panel h1,.panel h2,.panel h3{font-weight:600; margin:1.2rem 0 .5rem}
+    .panel h1{font-size:1.6rem; color:var(--purple)}
+    .panel h2{font-size:1.2rem; color:var(--pink)}
+    .panel h3{font-size:1rem; color:var(--orange)}
+    .panel p{margin:.5rem 0; color:var(--fg)}
+    .panel code{background:#1f2130; padding:.1rem .35rem; border-radius:4px; color:var(--yellow)}
+    .tag{display:inline-block; padding:.15rem .45rem; border:1px solid var(--current); border-radius:999px; font-size:.8rem; color:var(--cyan); margin-right:.35rem}
+    .callout{border-left:3px solid var(--green); background:#24303c; padding:.75rem 1rem; margin:1rem 0; border-radius:6px}
+    .grid{display:grid; gap:1rem}
+    @media(min-width:800px){.grid.cols-2{grid-template-columns:1fr 1fr}}
+
+    .card{border:1px solid var(--current); border-radius:12px; padding:1rem; background:#242837; box-shadow:var(--shadow)}
+    .card h3{margin-top:0}
+
+    .avatar{width:120px; height:120px; border-radius:16px; border:1px solid var(--current); background:#1f2130 center/cover no-repeat; box-shadow:var(--shadow)}
+    .muted{color:var(--comment)}
+    .footer{margin:2rem 0; padding-top:1rem; border-top:1px dashed var(--current); color:var(--comment); font-size:.9rem}
+
+    .btn{display:inline-block; padding:.5rem .8rem; border-radius:8px; border:1px solid var(--current); background:#1f2130; color:var(--fg)}
+    .btn:hover{background:#272a3a}
+
+    /* Small helper for fake line numbers */
+    .gutter{counter-reset: line}
+    .gutter .ln{counter-increment: line}
+    .gutter .ln::before{content: counter(line);}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- Title bar -->
+    <div class="titlebar" role="banner">
+      <div class="dot red" aria-hidden="true"></div>
+      <div class="dot yellow" aria-hidden="true"></div>
+      <div class="dot green" aria-hidden="true"></div>
+      <span class="title">lucasbxavier.com — <span class="muted">code</span></span>
+      <span class="muted" style="margin-left:auto">Dracula • Monospace</span>
+    </div>
+
+    <!-- Sidebar icons -->
+    <nav class="sidebar" aria-label="Primary">
+      <a class="sidebtn active" href="#about" title="About" aria-label="About">
+        <!-- Home/Person icon -->
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 2 9h2v11h6V14h4v6h6V9h2z"/></svg>
+      </a>
+      <a class="sidebtn" href="#projects" title="Projects" aria-label="Projects">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h18v4H3V3Zm0 7h18v4H3v-4Zm0 7h18v4H3v-4Z"/></svg>
+      </a>
+      <a class="sidebtn" href="#publications" title="Publications" aria-label="Publications">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm8 1v5h5"/></svg>
+      </a>
+      <a class="sidebtn" href="#participate" title="Participate" aria-label="Participate">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm-7 9a7 7 0 0 1 14 0Z"/></svg>
+      </a>
+      <a class="sidebtn" href="#contact" title="Contact" aria-label="Contact">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 8V7l-3 2-4-3-4 3-4-3-3 2v1l3-2 4 3 4-3 4 3 3-2Zm0 3-3 2-4-3-4 3-4-3-3 2v1l3-2 4 3 4-3 4 3 3-2v-1Zm0 4-3 2-4-3-4 3-4-3-3 2v1l3-2 4 3 4-3 4 3 3-2Z"/></svg>
+      </a>
+    </nav>
+
+    <!-- Main area with tabs + editor -->
+    <div class="main">
+      <div class="tabs" role="tablist">
+        <button class="tab active" role="tab" aria-selected="true">about.md</button>
+        <button class="tab" role="tab" aria-selected="false">projects.json</button>
+        <button class="tab" role="tab" aria-selected="false">publications.bib</button>
+        <button class="tab" role="tab" aria-selected="false">participate.md</button>
+        <button class="tab" role="tab" aria-selected="false">contact.ts</button>
+      </div>
+
+      <section class="editor" id="about">
+        <div class="editor-inner">
+          <aside class="gutter" aria-hidden="true">
+            <!-- generate ~ lines -->
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+          </aside>
+          <article class="content">
+            <div class="panel">
+              <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
+                <!-- Replace the inline background-image URL after you add /assets/avatar.jpg -->
+                <div class="avatar" style="background-image:url('assets/avatar.jpg');" aria-label="Your portrait"></div>
+                <div>
+                  <h1>Lucas Busani Xavier <span class="muted">// PhD Candidate · Marketing Researcher</span></h1>
+                  <p class="muted">Focus: technology consumption, video games, affordances & flow.</p>
+                  <p>
+                    <span class="tag">CCT</span>
+                    <span class="tag">STS</span>
+                    <span class="tag">Game Studies</span>
+                    <span class="tag">Methods</span>
+                  </p>
+                  <p><a class="btn" href="assets/CV_Lucas_Xavier.pdf" target="_blank" rel="noopener">Download CV</a>
+                     <span class="muted">← drop a PDF at <code>/assets/CV_Lucas_Xavier.pdf</code></span></p>
+                </div>
+              </div>
+
+              <div class="callout" role="note">
+                <strong>// About:</strong> Write 3–5 concise lines about your current research agenda, committees, and what you’re seeking (e.g., RA/TA opportunities, collaborations, participants).
+              </div>
+
+              <h2>Current Work</h2>
+              <p>// Replace these placeholders with a short paragraph on your dissertation theme and key projects.</p>
+
+              <h2>Selected News</h2>
+              <ul class="muted">
+                <li>[YYYY-MM] Preprint posted: <a href="#">Now You See It, Now You Don’t</a></li>
+                <li>[YYYY-MM] Talk at <a href="#">Conference / Workshop</a></li>
+                <li>[YYYY-MM] Data collection call for study on flow in games</li>
+              </ul>
+
+              <div class="footer">© <span id="y"></span> Lucas Busani Xavier — Built with GitHub Pages. Theme: Dracula-inspired.</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="editor" id="projects">
+        <div class="editor-inner">
+          <aside class="gutter" aria-hidden="true">
+            <!-- lines -->
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+            <span class="ln"></span>
+          </aside>
+          <article class="content">
+            <div class="panel">
+              <h1>Projects</h1>
+              <p class="muted">// Add 4–8 representative projects; keep it scannable.</p>
+              <div class="grid cols-2">
+                <div class="card">
+                  <h3><span style="color:var(--green)">►</span> Flow & Affordances in Game Consumption</h3>
+                  <p>Short, non-technical overview of objectives, methods, and early insights.</p>
+                  <p class="muted">Keywords: flow, affordances, occluding edge, mixed methods</p>
+                  <p><a href="#" class="btn">Abstract</a> <a href="#" class="btn" style="margin-left:.5rem">OSF / Materials</a></p>
+                </div>
+                <div class="card">
+                  <h3><span style="color:var(--green)">►</span> PHP: Post‑hylomorphic Perception (Model)</h3>
+                  <p>Conceptual model + study lineup (3 strategies). Pre-registration link here.</p>
+                  <p class="muted">Keywords: perception, affordance, divergent thinking</p>
+                  <p><a href="#" class="btn">Preprint</a> <a href="#" class="btn" style="margin-left:.5rem">Code</a></p>
+                </div>
+                <div class="card">
+                  <h3><span style="color:var(--green)">►</span> Attention Economy & Platforms</h3>
+                  <p>Position piece + dataset notes; bring Marxian lenses to creator economies.</p>
+                  <p class="muted">Keywords: supply/demand, creators, audiences</p>
+                  <p><a href="#" class="btn">Notes</a></p>
+                </div>
+                <div class="card">
+                  <h3><span style="color:var(--green)">►</span> MatchMoney: P2P Fixed‑Income</h3>
+                  <p>Entrepreneurial/marketing work: campaigns, segmentation, performance snapshots.</p>
+                  <p class="muted">Keywords: fintech, campaigns, ROI</p>
+                  <p><a href="#" class="btn">Case</a></p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="editor" id="publications">
+        <div class="editor-inner">
+          <aside class="gutter" aria-hidden="true">
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+          </aside>
+          <article class="content">
+            <div class="panel">
+              <h1>Publications & Working Papers</h1>
+              <p class="muted">// Paste your BibTeX or a concise list; link to preprints when possible.</p>
+              <ul>
+                <li>Lastname, L. B., & Coauthor, A. (YYYY). <em>Title of the work</em>. Venue. <a href="#">PDF</a></li>
+                <li>Working paper: <em>Now You See It, Now You Don’t</em>. <a href="#">Preprint</a></li>
+              </ul>
+              <p>
+                <a class="btn" href="#">Google Scholar</a>
+                <a class="btn" href="#" style="margin-left:.5rem">ORCID</a>
+                <a class="btn" href="#" style="margin-left:.5rem">ResearchGate</a>
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="editor" id="participate">
+        <div class="editor-inner">
+          <aside class="gutter" aria-hidden="true">
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+          </aside>
+          <article class="content">
+            <div class="panel">
+              <h1>Participate in a Study</h1>
+              <p class="muted">// Use this section as a landing page for recruitment. Keep eligibility, time, compensation, and IRB/ethics notes clear.</p>
+              <div class="card">
+                <h3>Study: Flow in Digital Consumption</h3>
+                <p>Eligibility: adults 18+. Duration: ~15–20 min online. Compensation: gift-card draw or course credit (if applicable).</p>
+                <p><a class="btn" href="#">Start survey</a> <span class="muted">← link to Qualtrics/REDCap</span></p>
+              </div>
+              <div class="card">
+                <h3>Interview Sign‑ups</h3>
+                <p>Interested in a 45–60 min interview? Add your name to the list.</p>
+                <p><a class="btn" href="#">Calendly</a> <span class="muted">or email me directly.</span></p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="editor" id="contact">
+        <div class="editor-inner">
+          <aside class="gutter" aria-hidden="true">
+            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
+            <span class="ln"></span>
+          </aside>
+          <article class="content">
+            <div class="panel">
+              <h1>Contact</h1>
+              <p>// Replace with your preferred contact channels.</p>
+              <p>Email: <a id="em" href="mailto:lucasbx@yorku.ca">lucasbx@yorku.ca</a> <button class="btn" id="copy">Copy</button></p>
+              <p>Social: <a href="#">LinkedIn</a> · <a href="#">Google Scholar</a> · <a href="#">ORCID</a> · <a href="#">GitHub</a></p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // Simple utilities
+    document.getElementById('y').textContent = new Date().getFullYear()
+
+    // Copy email
+    const copyBtn = document.getElementById('copy')
+    if (copyBtn){
+      copyBtn.addEventListener('click', () => {
+        const em = document.getElementById('em').textContent
+        navigator.clipboard.writeText(em).then(() => {
+          copyBtn.textContent = 'Copied!'
+          setTimeout(()=>copyBtn.textContent='Copy', 1500)
+        })
+      })
+    }
+
+    // Smooth-scroll for sidebar anchors
+    document.querySelectorAll('a.sidebtn').forEach(a=>{
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href')
+        if(href && href.startsWith('#')){
+          e.preventDefault()
+          document.querySelector(href)?.scrollIntoView({behavior:'smooth'})
+          document.querySelectorAll('.sidebtn').forEach(s=>s.classList.remove('active'))
+          a.classList.add('active')
+        }
+      })
+    })
+
+    // Fake tab interactions (purely cosmetic)
+    document.querySelectorAll('.tab').forEach(t=>{
+      t.addEventListener('click',()=>{
+        document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'))
+        t.classList.add('active')
+      })
+    })
+  </script>
+</body>
+</html>
