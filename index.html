@@ -36,24 +36,42 @@
     }
     a{color:var(--cyan); text-decoration:none}
     a:hover{text-decoration:underline}
+    html{ scroll-behavior: smooth; }
     /* VS Code-like frame */
-    .app{display:grid; grid-template-columns:56px 1fr; grid-template-rows:36px 1fr; height:100vh;}
-    .titlebar{grid-column:1/3; grid-row:1; display:flex; align-items:center; gap:.75rem; padding:0 .75rem; background:var(--bg-panel); border-bottom:1px solid var(--current)}
+    .app{display:grid; grid-template-columns:56px 1fr; grid-template-rows:36px auto; min-height:100vh;}
+    .titlebar{grid-column:1/3; grid-row:1; display:flex; align-items:center; gap:.75rem; padding:0 .75rem; background:var(--bg-panel); border-bottom:1px solid var(--current);
+                position:sticky;
+                top:0;
+                z-index:3;
+              }
     .titlebar .dot{width:10px; height:10px; border-radius:50%}
     .dot.red{background:var(--red)} .dot.yellow{background:var(--yellow)} .dot.green{background:var(--green)}
     .titlebar .title{font-weight:600; letter-spacing:.3px; color:var(--comment)}
 
-    .sidebar{grid-column:1; grid-row:2; background:#1c1e26; border-right:1px solid var(--current); display:flex; flex-direction:column; align-items:center; padding:.5rem 0; gap:.35rem}
+    .sidebar{grid-column:1; grid-row:2; background:#1c1e26; border-right:1px solid var(--current); display:flex; flex-direction:column; align-items:center; padding:.5rem 0; gap:.35rem;
+              position: sticky;
+              top: 36px;
+              height: calc(100vh - 36px);
+              align-self: start;
+              z-index: 2;
+            }
     .sidebtn{width:40px; height:40px; display:grid; place-items:center; border-radius:8px; color:var(--comment); cursor:pointer}
     .sidebtn.active, .sidebtn:hover{background:var(--current); color:var(--fg)}
     .sidebtn svg{width:20px; height:20px;}
-    .main{grid-column:2; grid-row:2; display:grid; grid-template-rows:40px 1fr}
+    .main{grid-column:2; grid-row:2;}
+
+    .scroller{
+      height: calc(100vh - 36px);  /* full height below the titlebar */
+      overflow: auto;               /* single scroll container for all sections */
+      scroll-behavior: smooth;      /* smooth anchor scrolls */
+    }
+    
 
     .tabs{display:flex; align-items:center; gap:2px; padding:0 .5rem; background:#20222c; border-bottom:1px solid var(--current)}
     .tab{padding:.45rem .7rem; background:#232634; color:var(--comment); border-top-left-radius:6px; border-top-right-radius:6px; cursor:pointer; border:1px solid var(--current); border-bottom:none}
     .tab.active{background:#2a2d3a; color:var(--fg)}
 
-    .editor{position:relative; height:100%; overflow:auto;}
+    .editor{position: relative; overflow: visible; scroll-margin-top: 44px;}
     .editor-inner{display:grid; grid-template-columns:48px 1fr; min-height:100%;}
     .gutter{background:#232634; color:var(--comment); padding:.75rem .5rem; border-right:1px solid var(--current)}
     .gutter .ln{display:block; height:24px}
@@ -93,8 +111,8 @@
       <div class="dot red" aria-hidden="true"></div>
       <div class="dot yellow" aria-hidden="true"></div>
       <div class="dot green" aria-hidden="true"></div>
-      <span class="title">lucasbxavier.com — <span class="muted">code</span></span>
-      <span class="muted" style="margin-left:auto">Dracula • Monospace</span>
+      <span class="title">lucasbxavier.com</span>
+      <span class="muted" style="margin-left:auto">Dracula | Monospace</span>
     </div>
 
     <!-- Sidebar icons -->
@@ -119,13 +137,8 @@
 
     <!-- Main area with tabs + editor -->
     <div class="main">
-      <div class="tabs" role="tablist">
-        <button class="tab active" role="tab" aria-selected="true">about.md</button>
-        <button class="tab" role="tab" aria-selected="false">projects.json</button>
-        <button class="tab" role="tab" aria-selected="false">publications.bib</button>
-        <button class="tab" role="tab" aria-selected="false">participate.md</button>
-        <button class="tab" role="tab" aria-selected="false">contact.ts</button>
-      </div>
+      <div class="scroller">
+
 
       <section class="editor" id="about">
         <div class="editor-inner">
@@ -287,7 +300,9 @@
           </article>
         </div>
       </section>
-    </div>
+    
+      </div>
+</div>
   </div>
 
   <script>
@@ -319,13 +334,6 @@
       })
     })
 
-    // Fake tab interactions (purely cosmetic)
-    document.querySelectorAll('.tab').forEach(t=>{
-      t.addEventListener('click',()=>{
-        document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'))
-        t.classList.add('active')
-      })
-    })
   </script>
 </body>
 </html>
