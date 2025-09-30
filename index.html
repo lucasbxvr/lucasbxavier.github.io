@@ -1,108 +1,14 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Lucas B. Xavier — Marketing Researcher</title>
+  <title>Lucas B. Xavier â€” Marketing Researcher</title>
   <meta name="description" content="PhD candidate and marketing researcher. Technology consumption, games, affordances, flow. Projects, publications, CV, and study participation." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      /* Dracula palette */
-      --bg: #282a36;
-      --bg-panel: #1e2029; /* custom darker panel */
-      --current: #44475a;
-      --fg: #f8f8f2;
-      --comment: #6272a4;
-      --cyan: #8be9fd;
-      --green: #50fa7b;
-      --orange: #ffb86c;
-      --pink: #ff79c6;
-      --purple: #bd93f9;
-      --red: #ff5555;
-      --yellow: #f1fa8c;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:"Fira Code", SFMono-Regular, Consolas, Menlo, Monaco, "Liberation Mono", monospace;
-      color:var(--fg);
-      background:var(--bg);
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-    }
-    a{color:var(--cyan); text-decoration:none}
-    a:hover{text-decoration:underline}
-    html{ scroll-behavior: smooth; }
-    /* VS Code-like frame */
-    .app{display:grid; grid-template-columns:56px 1fr; grid-template-rows:36px auto; min-height:100vh;}
-    .titlebar{grid-column:1/3; grid-row:1; display:flex; align-items:center; gap:.75rem; padding:0 .75rem; background:var(--bg-panel); border-bottom:1px solid var(--current);
-                position:sticky;
-                top:0;
-                z-index:3;
-              }
-    .titlebar .dot{width:10px; height:10px; border-radius:50%}
-    .dot.red{background:var(--red)} .dot.yellow{background:var(--yellow)} .dot.green{background:var(--green)}
-    .titlebar .title{font-weight:600; letter-spacing:.3px; color:var(--comment)}
-
-    .sidebar{grid-column:1; grid-row:2; background:#1c1e26; border-right:1px solid var(--current); display:flex; flex-direction:column; align-items:center; padding:.5rem 0; gap:.35rem;
-              position: sticky;
-              top: 36px;
-              height: calc(100vh - 36px);
-              align-self: start;
-              z-index: 2;
-            }
-    .sidebtn{width:40px; height:40px; display:grid; place-items:center; border-radius:8px; color:var(--comment); cursor:pointer}
-    .sidebtn.active, .sidebtn:hover{background:var(--current); color:var(--fg)}
-    .sidebtn svg{width:20px; height:20px;}
-    .main{grid-column:2; grid-row:2;}
-
-    .scroller{
-      height: calc(100vh - 36px);  /* full height below the titlebar */
-      overflow: auto;               /* single scroll container for all sections */
-      scroll-behavior: smooth;      /* smooth anchor scrolls */
-    }
-    
-
-    .tabs{display:flex; align-items:center; gap:2px; padding:0 .5rem; background:#20222c; border-bottom:1px solid var(--current)}
-    .tab{padding:.45rem .7rem; background:#232634; color:var(--comment); border-top-left-radius:6px; border-top-right-radius:6px; cursor:pointer; border:1px solid var(--current); border-bottom:none}
-    .tab.active{background:#2a2d3a; color:var(--fg)}
-
-    .editor{position: relative; overflow: visible; scroll-margin-top: 44px;}
-    .editor-inner{display:grid; grid-template-columns:48px 1fr; min-height:100%;}
-    .gutter{background:#232634; color:var(--comment); padding:.75rem .5rem; border-right:1px solid var(--current)}
-    .gutter .ln{display:block; height:24px}
-    .content{padding:1rem 1.5rem; background:#2a2d3a;}
-    .panel{max-width:980px; margin:0 auto; line-height:1.6}
-    .panel h1,.panel h2,.panel h3{font-weight:600; margin:1.2rem 0 .5rem}
-    .panel h1{font-size:1.6rem; color:var(--purple)}
-    .panel h2{font-size:1.2rem; color:var(--pink)}
-    .panel h3{font-size:1rem; color:var(--orange)}
-    .panel p{margin:.5rem 0; color:var(--fg)}
-    .panel code{background:#1f2130; padding:.1rem .35rem; border-radius:4px; color:var(--yellow)}
-    .tag{display:inline-block; padding:.15rem .45rem; border:1px solid var(--current); border-radius:999px; font-size:.8rem; color:var(--cyan); margin-right:.35rem}
-    .callout{border-left:3px solid var(--green); background:#24303c; padding:.75rem 1rem; margin:1rem 0; border-radius:6px}
-    .grid{display:grid; gap:1rem}
-    @media(min-width:800px){.grid.cols-2{grid-template-columns:1fr 1fr}}
-
-    .card{border:1px solid var(--current); border-radius:12px; padding:1rem; background:#242837; box-shadow:var(--shadow)}
-    .card h3{margin-top:0}
-
-    .avatar{width:120px; height:120px; border-radius:16px; border:1px solid var(--current); background:#1f2130 center/cover no-repeat; box-shadow:var(--shadow)}
-    .muted{color:var(--comment)}
-    .footer{margin:2rem 0; padding-top:1rem; border-top:1px dashed var(--current); color:var(--comment); font-size:.9rem}
-
-    .btn{display:inline-block; padding:.5rem .8rem; border-radius:8px; border:1px solid var(--current); background:#1f2130; color:var(--fg)}
-    .btn:hover{background:#272a3a}
-
-    /* Small helper for fake line numbers */
-    .gutter{counter-reset: line}
-    .gutter .ln{counter-increment: line}
-    .gutter .ln::before{content: counter(line);}
-  </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div class="app">
@@ -156,7 +62,7 @@
                 <!-- Replace the inline background-image URL after you add /assets/avatar.jpg -->
                 <div class="avatar" style="background-image:url('assets/avatar.jpg');" aria-label="Your portrait"></div>
                 <div>
-                  <h1>Lucas Busani Xavier <span class="muted">// PhD Candidate · Marketing Researcher</span></h1>
+                  <h1>Lucas Busani Xavier <span class="muted">// PhD Candidate Â· Marketing Researcher</span></h1>
                   <p class="muted">Focus: technology consumption, video games, sociomateriality.</p>
                   <p>
                     <span class="tag">CCT</span>
@@ -165,12 +71,12 @@
                     <span class="tag">Methods</span>
                   </p>
                   <p><a class="btn" href="assets/CV_Lucas_Xavier.pdf" target="_blank" rel="noopener">Download CV</a>
-                     <span class="muted">← drop a PDF at <code>/assets/CV_Lucas_Xavier.pdf</code></span></p>
+                     <span class="muted">â† drop a PDF at <code>/assets/CV_Lucas_Xavier.pdf</code></span></p>
                 </div>
               </div>
 
               <div class="callout" role="note">
-                <strong>// About:</strong> Write 3–5 concise lines about your current research agenda, committees, and what you’re seeking (e.g., RA/TA opportunities, collaborations, participants).
+                <strong>// About:</strong> Write 3â€“5 concise lines about your current research agenda, committees, and what youâ€™re seeking (e.g., RA/TA opportunities, collaborations, participants).
               </div>
 
               <h2>Current Work</h2>
@@ -178,12 +84,12 @@
 
               <h2>Selected News</h2>
               <ul class="muted">
-                <li>[YYYY-MM] Preprint posted: <a href="#">Now You See It, Now You Don’t</a></li>
+                <li>[YYYY-MM] Preprint posted: <a href="#">Now You See It, Now You Donâ€™t</a></li>
                 <li>[YYYY-MM] Talk at <a href="#">Conference / Workshop</a></li>
                 <li>[YYYY-MM] Data collection call for study on flow in games</li>
               </ul>
 
-              <div class="footer">© <span id="y"></span> Lucas Busani Xavier — Built with GitHub Pages. Theme: Dracula-inspired.</div>
+              <div class="footer">Â© <span id="y"></span> Lucas Busani Xavier â€” Built with GitHub Pages. Theme: Dracula-inspired.</div>
             </div>
           </article>
         </div>
@@ -202,28 +108,28 @@
           <article class="content">
             <div class="panel">
               <h1>Projects</h1>
-              <p class="muted">// Add 4–8 representative projects; keep it scannable.</p>
+              <p class="muted">// Add 4â€“8 representative projects; keep it scannable.</p>
               <div class="grid cols-2">
                 <div class="card">
-                  <h3><span style="color:var(--green)">►</span> Flow & Affordances in Game Consumption</h3>
+                  <h3><span style="color:var(--green)">â–º</span> Flow & Affordances in Game Consumption</h3>
                   <p>Short, non-technical overview of objectives, methods, and early insights.</p>
                   <p class="muted">Keywords: flow, affordances, occluding edge, mixed methods</p>
                   <p><a href="#" class="btn">Abstract</a> <a href="#" class="btn" style="margin-left:.5rem">OSF / Materials</a></p>
                 </div>
                 <div class="card">
-                  <h3><span style="color:var(--green)">►</span> PROJECT TITLE</h3>
+                  <h3><span style="color:var(--green)">â–º</span> PROJECT TITLE</h3>
                   <p>DESCRIPTION.</p>
                   <p class="muted">KEYWORDS</p>
                   <p><a href="#" class="btn">Preprint</a> <a href="#" class="btn" style="margin-left:.5rem">Code</a></p>
                 </div>
                 <div class="card">
-                  <h3><span style="color:var(--green)">►</span> PROJECT TITLE</h3>
+                  <h3><span style="color:var(--green)">â–º</span> PROJECT TITLE</h3>
                   <p>DESCRIPTION.</p>
                   <p class="muted">KEYWORDS</p>
                   <p><a href="#" class="btn">Notes</a></p>
                 </div>
                 <div class="card">
-                  <h3><span style="color:var(--green)">►</span> PROJECT TITLE</h3>
+                  <h3><span style="color:var(--green)">â–º</span> PROJECT TITLE</h3>
                   <p>DESCRIPTION.</p>
                   <p class="muted">KEYWORDS</p>
                   <p><a href="#" class="btn">Case</a></p>
@@ -247,7 +153,7 @@
               <p class="muted">// Paste your BibTeX or a concise list; link to preprints when possible.</p>
               <ul>
                 <li>Lastname, L. B., & Coauthor, A. (YYYY). <em>Title of the work</em>. Venue. <a href="#">PDF</a></li>
-                <li>Working paper: <em>Now You See It, Now You Don’t</em>. <a href="#">Preprint</a></li>
+                <li>Working paper: <em>Now You See It, Now You Donâ€™t</em>. <a href="#">Preprint</a></li>
               </ul>
               <p>
                 <a class="btn" href="#">Google Scholar</a>
@@ -272,7 +178,7 @@
               <div class="card">
                 <h3>STUDY EXAMPLE</h3>
                 <p>DESCRIPTION.</p>
-                <p><a class="btn" href="#">LINK</a> <span class="muted">← link to Qualtrics/REDCap</span></p>
+                <p><a class="btn" href="#">LINK</a> <span class="muted">â† link to Qualtrics/REDCap</span></p>
               </div>
               <div class="card">
                 <h3>STUDY EXAMPLE</h3>
@@ -295,7 +201,7 @@
               <h1>Contact</h1>
               <p>// Replace with your preferred contact channels.</p>
               <p>Email: <a id="em" href="mailto:lucasbx@schulich.yorku.ca">lucasbx@schulich.yorku.ca</a> <button class="btn" id="copy">Copy</button></p>
-              <p>Social: <a href="#">LinkedIn</a> · <a href="#">Google Scholar</a> · <a href="#">ORCID</a> · <a href="#">GitHub</a></p>
+              <p>Social: <a href="#">LinkedIn</a> Â· <a href="#">Google Scholar</a> Â· <a href="#">ORCID</a> Â· <a href="#">GitHub</a></p>
             </div>
           </article>
         </div>
@@ -305,35 +211,7 @@
 </div>
   </div>
 
-  <script>
-    // Simple utilities
-    document.getElementById('y').textContent = new Date().getFullYear()
-
-    // Copy email
-    const copyBtn = document.getElementById('copy')
-    if (copyBtn){
-      copyBtn.addEventListener('click', () => {
-        const em = document.getElementById('em').textContent
-        navigator.clipboard.writeText(em).then(() => {
-          copyBtn.textContent = 'Copied!'
-          setTimeout(()=>copyBtn.textContent='Copy', 1500)
-        })
-      })
-    }
-
-    // Smooth-scroll for sidebar anchors
-    document.querySelectorAll('a.sidebtn').forEach(a=>{
-      a.addEventListener('click', e => {
-        const href = a.getAttribute('href')
-        if(href && href.startsWith('#')){
-          e.preventDefault()
-          document.querySelector(href)?.scrollIntoView({behavior:'smooth'})
-          document.querySelectorAll('.sidebtn').forEach(s=>s.classList.remove('active'))
-          a.classList.add('active')
-        }
-      })
-    })
-
-  </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
+

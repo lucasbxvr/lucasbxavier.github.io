@@ -1,0 +1,94 @@
+﻿:root{
+      /* Dracula palette */
+      --bg: #282a36;
+      --bg-panel: #1e2029; /* custom darker panel */
+      --current: #44475a;
+      --fg: #f8f8f2;
+      --comment: #6272a4;
+      --cyan: #8be9fd;
+      --green: #50fa7b;
+      --orange: #ffb86c;
+      --pink: #ff79c6;
+      --purple: #bd93f9;
+      --red: #ff5555;
+      --yellow: #f1fa8c;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Fira Code", SFMono-Regular, Consolas, Menlo, Monaco, "Liberation Mono", monospace;
+      color:var(--fg);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{color:var(--cyan); text-decoration:none}
+    a:hover{text-decoration:underline}
+    html{ scroll-behavior: smooth; }
+    /* VS Code-like frame */
+    .app{display:grid; grid-template-columns:56px 1fr; grid-template-rows:36px auto; min-height:100vh;}
+    .titlebar{grid-column:1/3; grid-row:1; display:flex; align-items:center; gap:.75rem; padding:0 .75rem; background:var(--bg-panel); border-bottom:1px solid var(--current);
+                position:sticky;
+                top:0;
+                z-index:3;
+              }
+    .titlebar .dot{width:10px; height:10px; border-radius:50%}
+    .dot.red{background:var(--red)} .dot.yellow{background:var(--yellow)} .dot.green{background:var(--green)}
+    .titlebar .title{font-weight:600; letter-spacing:.3px; color:var(--comment)}
+
+    .sidebar{grid-column:1; grid-row:2; background:#1c1e26; border-right:1px solid var(--current); display:flex; flex-direction:column; align-items:center; padding:.5rem 0; gap:.35rem;
+              position: sticky;
+              top: 36px;
+              height: calc(100vh - 36px);
+              align-self: start;
+              z-index: 2;
+            }
+    .sidebtn{width:40px; height:40px; display:grid; place-items:center; border-radius:8px; color:var(--comment); cursor:pointer}
+    .sidebtn.active, .sidebtn:hover{background:var(--current); color:var(--fg)}
+    .sidebtn svg{width:20px; height:20px;}
+    .main{grid-column:2; grid-row:2;}
+
+    .scroller{
+      height: calc(100vh - 36px);  /* full height below the titlebar */
+      overflow: auto;               /* single scroll container for all sections */
+      scroll-behavior: smooth;      /* smooth anchor scrolls */
+    }
+    
+
+    .tabs{display:flex; align-items:center; gap:2px; padding:0 .5rem; background:#20222c; border-bottom:1px solid var(--current)}
+    .tab{padding:.45rem .7rem; background:#232634; color:var(--comment); border-top-left-radius:6px; border-top-right-radius:6px; cursor:pointer; border:1px solid var(--current); border-bottom:none}
+    .tab.active{background:#2a2d3a; color:var(--fg)}
+
+    .editor{position: relative; overflow: visible; scroll-margin-top: 44px;}
+    .editor-inner{display:grid; grid-template-columns:48px 1fr; min-height:100%;}
+    .gutter{background:#232634; color:var(--comment); padding:.75rem .5rem; border-right:1px solid var(--current)}
+    .gutter .ln{display:block; height:24px}
+    .content{padding:1rem 1.5rem; background:#2a2d3a;}
+    .panel{max-width:980px; margin:0 auto; line-height:1.6}
+    .panel h1,.panel h2,.panel h3{font-weight:600; margin:1.2rem 0 .5rem}
+    .panel h1{font-size:1.6rem; color:var(--purple)}
+    .panel h2{font-size:1.2rem; color:var(--pink)}
+    .panel h3{font-size:1rem; color:var(--orange)}
+    .panel p{margin:.5rem 0; color:var(--fg)}
+    .panel code{background:#1f2130; padding:.1rem .35rem; border-radius:4px; color:var(--yellow)}
+    .tag{display:inline-block; padding:.15rem .45rem; border:1px solid var(--current); border-radius:999px; font-size:.8rem; color:var(--cyan); margin-right:.35rem}
+    .callout{border-left:3px solid var(--green); background:#24303c; padding:.75rem 1rem; margin:1rem 0; border-radius:6px}
+    .grid{display:grid; gap:1rem}
+    @media(min-width:800px){.grid.cols-2{grid-template-columns:1fr 1fr}}
+
+    .card{border:1px solid var(--current); border-radius:12px; padding:1rem; background:#242837; box-shadow:var(--shadow)}
+    .card h3{margin-top:0}
+
+    .avatar{width:120px; height:120px; border-radius:16px; border:1px solid var(--current); background:#1f2130 center/cover no-repeat; box-shadow:var(--shadow)}
+    .muted{color:var(--comment)}
+    .footer{margin:2rem 0; padding-top:1rem; border-top:1px dashed var(--current); color:var(--comment); font-size:.9rem}
+
+    .btn{display:inline-block; padding:.5rem .8rem; border-radius:8px; border:1px solid var(--current); background:#1f2130; color:var(--fg)}
+    .btn:hover{background:#272a3a}
+
+    /* Small helper for fake line numbers */
+    .gutter{counter-reset: line}
+    .gutter .ln{counter-increment: line}
+    .gutter .ln::before{content: counter(line);}
+
