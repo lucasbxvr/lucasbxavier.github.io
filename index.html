@@ -1,217 +1,269 @@
-﻿<!doctype html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Lucas B. Xavier · Marketing Researcher</title>
-  <meta name="description" content="PhD candidate and marketing researcher. Technology consumption, games, affordances, flow. Projects, publications, CV, and study participation." />
+  <meta name="description" content="PhD candidate and marketing researcher. Technology consumption, games, affordances, flow." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="app">
-    <!-- Title bar -->
-    <div class="titlebar" role="banner">
-      <div class="dot red" aria-hidden="true"></div>
-      <div class="dot yellow" aria-hidden="true"></div>
-      <div class="dot green" aria-hidden="true"></div>
-      <span class="title">lucasbxavier.com</span>
-      <span class="muted" style="margin-left:auto">Dracula | Monospace</span>
+<div class="app" id="app">
+
+  <!-- ── Title bar ── -->
+  <header class="titlebar" role="banner">
+    <span class="title">lucasbxavier.com</span>
+    <span class="spacer"></span>
+    <span class="muted theme-label">Dracula | Monospace</span>
+    <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+      <button class="lang-btn active" data-lang-target="en" aria-pressed="true">EN</button>
+      <button class="lang-btn" data-lang-target="pt" aria-pressed="false">PT</button>
+    </div>
+  </header>
+
+  <!-- ── Sidebar ── -->
+  <nav class="sidebar" id="sidebar" aria-label="Primary navigation">
+
+    <!-- Hamburger / expand -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <!-- Three-line hamburger -->
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z"/>
+      </svg>
+      <span class="toggle-label muted">Menu</span>
+    </button>
+
+    <!-- Home (with subsection toggle) -->
+    <button class="nav-item home-row active" id="home-row" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2 2 9h2v11h6V14h4v6h6V9h2z"/>
+      </svg>
+      <span class="nav-label">
+        <span lang="en">Home</span>
+        <span lang="pt">Início</span>
+      </span>
+      <!-- Chevron -->
+      <svg class="home-chevron" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </button>
+
+    <!-- Subsections (shown when sidebar open + home expanded) -->
+    <div class="subnav" id="subnav">
+      <a class="subnav-item active" href="#about" data-section="about">
+        <span lang="en">About</span><span lang="pt">Sobre</span>
+      </a>
+      <a class="subnav-item" href="#projects" data-section="projects">
+        <span lang="en">Projects</span><span lang="pt">Projetos</span>
+      </a>
+      <a class="subnav-item" href="#publications" data-section="publications">
+        <span lang="en">Publications</span><span lang="pt">Publicações</span>
+      </a>
+      <a class="subnav-item" href="#participate" data-section="participate">
+        <span lang="en">Participate</span><span lang="pt">Participe</span>
+      </a>
     </div>
 
-    <!-- Sidebar icons -->
-    <nav class="sidebar" aria-label="Primary">
-      <a class="sidebtn active" href="#about" title="About" aria-label="About">
-        <!-- Home/Person icon -->
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 2 9h2v11h6V14h4v6h6V9h2z"/></svg>
-      </a>
-      <a class="sidebtn" href="#projects" title="Projects" aria-label="Projects">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h18v4H3V3Zm0 7h18v4H3v-4Zm0 7h18v4H3v-4Z"/></svg>
-      </a>
-      <a class="sidebtn" href="#publications" title="Publications" aria-label="Publications">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm8 1v5h5"/></svg>
-      </a>
-      <a class="sidebtn" href="#participate" title="Participate" aria-label="Participate">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm-7 9a7 7 0 0 1 14 0Z"/></svg>
-      </a>
-      <a class="sidebtn" href="#contact" title="Contact" aria-label="Contact">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 8V7l-3 2-4-3-4 3-4-3-3 2v1l3-2 4 3 4-3 4 3 3-2Zm0 3-3 2-4-3-4 3-4-3-3 2v1l3-2 4 3 4-3 4 3 3-2v-1Zm0 4-3 2-4-3-4 3-4-3-3 2v1l3-2 4 3 4-3 4 3 3-2Z"/></svg>
-      </a>
-    </nav>
+    <!-- Blog -->
+    <a class="nav-item" href="blog/index.html" aria-label="Blog">
+      <!-- Pencil / edit icon -->
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25ZM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83Z"/>
+      </svg>
+      <span class="nav-label">Blog</span>
+    </a>
 
-    <!-- Main area with tabs + editor -->
-    <div class="main">
-      <div class="scroller">
+    <!-- Contact -->
+    <a class="nav-item" href="contact.html" aria-label="Contact">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
+      </svg>
+      <span class="nav-label">
+        <span lang="en">Contact</span>
+        <span lang="pt">Contato</span>
+      </span>
+    </a>
 
+  </nav>
 
+  <!-- ── Main ── -->
+  <div class="main">
+    <div class="scroller" id="scroller">
+
+      <!-- ══ About ══ -->
       <section class="editor" id="about">
-        <div class="editor-inner">
-          <aside class="gutter" aria-hidden="true">
-            <!-- generate ~ lines -->
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-          </aside>
-          <article class="content">
-            <div class="panel">
-              <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
-                <!-- Replace the inline background-image URL after you add /assets/avatar.jpg -->
-                <div class="avatar" style="background-image:url('assets/avatar.jpg');" aria-label="Your portrait"></div>
-                <div>
-                  <h1>Lucas Busani Xavier <span class="muted">// PhD Candidate · Marketing Researcher</span></h1>
-                  <p class="muted">Focus: technology consumption, video games, sociomateriality.</p>
-                  <p>
-                    <span class="tag">CCT</span>
-                    <span class="tag">Marketing</span>
-                    <span class="tag">Game Studies</span>
-                    <span class="tag">STS</span>
-                  </p>
-                  <p><a class="btn" href="assets/CV_Lucas_Xavier.pdf" target="_blank" rel="noopener">Download CV</a>
-                </div>
+        <div class="content">
+          <div class="panel">
+            <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
+              <div class="avatar" style="background-image:url('assets/avatar.jpg');" aria-label="Lucas B. Xavier portrait"></div>
+              <div>
+                <h1>Lucas Busani Xavier <span class="muted">
+                  <span lang="en">// PhD Candidate · Marketing Researcher</span>
+                  <span lang="pt">// Doutorando · Pesquisador de Marketing</span>
+                </span></h1>
+                <p class="muted">
+                  <span lang="en">Focus: technology consumption, video games, sociomateriality.</span>
+                  <span lang="pt">Foco: consumo de tecnologia, videogames, sociomaterialidade.</span>
+                </p>
+                <p>
+                  <span class="tag">CCT</span>
+                  <span class="tag">Marketing</span>
+                  <span class="tag">Game Studies</span>
+                  <span class="tag">STS</span>
+                </p>
+                <p><a class="btn" href="assets/CV_Lucas_Xavier.pdf" target="_blank" rel="noopener">
+                  <span lang="en">Download CV</span>
+                  <span lang="pt">Baixar CV</span>
+                </a></p>
               </div>
-
-              <div class="callout" role="note">
-                <strong>// About:</strong> Lucas B Xavier is a PhD candidate in Marketing at York University's Schulich School of Business. His research explores the consumer culture around technology through the lens of sociomateriality.
-              </div>
-
-              <h2>Current Work</h2>
-              <p>// Currently working on a project that tries to reconceptualize flow from an affordance theory perspetive in the context of video games.</p>
-
-              <h2>Recent Presentations, Talks, and Other</h2>
-              <ul class="muted">
-                <li>[2024-06] CCT Conference Poster: <a href="#" target="_blank" rel="noopener">Of Affordances and Flow</a></li>
-                <li>[2024-07] Talk at Podcast Impacto by FGV EAESP [pt-br] <a href="https://open.spotify.com/episode/2PqdeuMoC3aYmwjPHttE21?si=j33KPPx2TrqKQIbcoysO8w" target="_blank" rel="noopener">Exploring Affordance Theory and Video Games</a></li>
-                <li>[2023-04] Opinion Article at O Estado de São Paulo [pt-br] <a href="https://www.estadao.com.br/politica/gestao-politica-e-sociedade/videogames-para-o-bem-ou-para-o-mal/" target="_blank" rel="noopener">Video Games: for good or for evil?</a></li>
-              </ul>
-
-              
             </div>
-          </article>
+
+            <div class="callout" role="note">
+              <strong lang="en">// About:</strong>
+              <strong lang="pt">// Sobre:</strong>
+              <span lang="en"> Lucas B Xavier is a PhD candidate in Marketing at York University's Schulich School of Business. His research explores the consumer culture around technology through the lens of sociomateriality.</span>
+              <span lang="pt"> Lucas B. Xavier é doutorando em Marketing na Schulich School of Business da York University. Sua pesquisa explora a cultura de consumo em torno da tecnologia sob a perspectiva da sociomaterialidade.</span>
+            </div>
+
+            <h2>
+              <span lang="en">Current Work</span>
+              <span lang="pt">Trabalho Atual</span>
+            </h2>
+            <p>
+              <span lang="en">// Currently working on a project that tries to reconceptualize flow from an affordance theory perspective in the context of video games.</span>
+              <span lang="pt">// Atualmente trabalhando em um projeto que busca reconceptualizar o estado de fluxo a partir da teoria das affordances no contexto dos videogames.</span>
+            </p>
+
+            <h2>
+              <span lang="en">Recent Presentations, Talks, and Other</span>
+              <span lang="pt">Apresentações, Palestras e Outros Recentes</span>
+            </h2>
+            <ul class="muted">
+              <li>[2024-06] CCT Conference Poster: <a href="assets/CCTC24_poster.pdf" target="_blank" rel="noopener">
+                <span lang="en">Of Affordances and Flow</span>
+                <span lang="pt">Das Affordances ao Fluxo</span>
+              </a></li>
+              <li>[2024-07] <span lang="en">Talk at Podcast Impacto by FGV EAESP [pt-br]</span><span lang="pt">Palestra no Podcast Impacto da FGV EAESP [pt-br]</span> — <a href="https://open.spotify.com/episode/2PqdeuMoC3aYmwjPHttE21?si=j33KPPx2TrqKQIbcoysO8w" target="_blank" rel="noopener">
+                <span lang="en">Exploring Affordance Theory and Video Games</span>
+                <span lang="pt">Explorando a Teoria das Affordances e os Videogames</span>
+              </a></li>
+              <li>[2023-04] <span lang="en">Opinion Article at O Estado de São Paulo [pt-br]</span><span lang="pt">Artigo de opinião no O Estado de São Paulo [pt-br]</span> — <a href="https://www.estadao.com.br/politica/gestao-politica-e-sociedade/videogames-para-o-bem-ou-para-o-mal/" target="_blank" rel="noopener">
+                <span lang="en">Video Games: for good or for evil?</span>
+                <span lang="pt">Videogames: para o bem ou para o mal?</span>
+              </a></li>
+            </ul>
+          </div>
         </div>
       </section>
 
+      <!-- ══ Projects ══ -->
       <section class="editor" id="projects">
-        <div class="editor-inner">
-          <aside class="gutter" aria-hidden="true">
-            <!-- lines -->
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-            <span class="ln"></span>
-          </aside>
-          <article class="content">
-            <div class="panel">
-              <h1>Projects</h1>
-              <p class="muted">// Current work-in-progress research.</p>
-              <div class="grid cols-2">
-                <div class="card">
-                  <h3><span style="color:var(--green)">></span> Flow & Affordances in Game Consumption</h3>
-                  <p>How does flow emerge during gameplay experiences? This study explore an answer based on how the affordances of video games enable and contrain flow.</p>
-                  <p class="muted">Keywords: flow, affordances, occluding edge, walkthrough method</p>
-                  <!--
-                  <p><a href="#" class="btn">Abstract</a> <a href="#" class="btn" style="margin-left:.5rem">OSF / Materials</a></p>
-                  -->
-                </div>
-                <div class="card">
-                  <h3><span style="color:var(--green)">></span> PROJECT TITLE</h3>
-                  <p>DESCRIPTION.</p>
-                  <p class="muted">KEYWORDS</p>
-                  <p><a href="#" class="btn">Button</a>
-                </div>
-                <div class="card">
-                  <h3><span style="color:var(--green)">></span> PROJECT TITLE</h3>
-                  <p>DESCRIPTION.</p>
-                  <p class="muted">KEYWORDS</p>
-                  <p><a href="#" class="btn">Button</a></p>
-                </div>
-                <div class="card">
-                  <h3><span style="color:var(--green)">></span> PROJECT TITLE</h3>
-                  <p>DESCRIPTION.</p>
-                  <p class="muted">KEYWORDS</p>
-                  <p><a href="#" class="btn">Button</a></p>
-                </div>
+        <div class="content">
+          <div class="panel">
+            <h1>
+              <span lang="en">Projects</span>
+              <span lang="pt">Projetos</span>
+            </h1>
+            <p class="muted">
+              <span lang="en">// Current work-in-progress research.</span>
+              <span lang="pt">// Pesquisas em andamento.</span>
+            </p>
+            <div class="grid cols-2">
+              <div class="card">
+                <h3><span style="color:var(--green)">></span>
+                  <span lang="en">Flow &amp; Affordances in Game Consumption</span>
+                  <span lang="pt">Fluxo &amp; Affordances no Consumo de Jogos</span>
+                </h3>
+                <p>
+                  <span lang="en">How does flow emerge during gameplay experiences? This study explores an answer based on how the affordances of video games enable and constrain flow.</span>
+                  <span lang="pt">Como o estado de fluxo emerge durante as experiências de jogo? Este estudo investiga uma resposta com base em como as affordances dos videogames habilitam e restringem o fluxo.</span>
+                </p>
+                <p class="muted">
+                  <span lang="en">Keywords: flow, affordances, occluding edge, walkthrough method</span>
+                  <span lang="pt">Palavras-chave: fluxo, affordances, borda de oclusão, método walkthrough</span>
+                </p>
+              </div>
+              <div class="card">
+                <h3><span style="color:var(--green)">></span> PROJECT TITLE</h3>
+                <p>DESCRIPTION.</p>
+                <p class="muted">KEYWORDS</p>
+              </div>
+              <div class="card">
+                <h3><span style="color:var(--green)">></span> PROJECT TITLE</h3>
+                <p>DESCRIPTION.</p>
+                <p class="muted">KEYWORDS</p>
+              </div>
+              <div class="card">
+                <h3><span style="color:var(--green)">></span> PROJECT TITLE</h3>
+                <p>DESCRIPTION.</p>
+                <p class="muted">KEYWORDS</p>
               </div>
             </div>
-          </article>
+          </div>
         </div>
       </section>
 
+      <!-- ══ Publications ══ -->
       <section class="editor" id="publications">
-        <div class="editor-inner">
-          <aside class="gutter" aria-hidden="true">
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-          </aside>
-          <article class="content">
-            <div class="panel">
-              <h1>Publications</h1>
-              <p class="muted">// Papers published, posters presented, and working papers.</p>
-              <ul>
-                <li>Xavier, L. B. (2023) <em>The legend of video games: a link to affordance theory</em>. Master's Thesis. <a href="/assets/A Link to Affordance Theory - Lucas Busani Xavier.pdf" target="_blank" rel="noopener">PDF</a></li>
-                <li>Dallabrida, Y. M., Xavier, L. B. (2022) <em>Se não consegue vencê-los, junte-se a eles? Pirataria digital como fonte de inovação aberta</em>. EnANPAD 2022. <a href="/assets/Se não consegue vencê-los, junte-se a eles.pdf" target="_blank" rel="noopener">PDF</a></li>
-                <li>Xavier, L. B. (2021) <em>Como Comprar se não Está a Venda? Um Estudo sobre Legitimidade e Pirataria na Comunidade Gamer.</em> EnANPAD 2021. <a href="/assets/Como Comprar se não Está a Venda.pdf" target="_blank" rel="noopener">PDF</a></li>
-                <li>Videgas, R. R., & Xavier, L. B. (2021). <em>The political use of Twitter by the Federal Prosecution Service in Brazil</em>. Proceedings of the IAPSS Virtual World Congress 2021. <a href="/assets/ThePoliticalUseofTwitterbytheMPF.pdf"  target="_blank" rel="noopener">PDF</a></li>
-              </ul>
+        <div class="content">
+          <div class="panel">
+            <h1>
+              <span lang="en">Publications</span>
+              <span lang="pt">Publicações</span>
+            </h1>
+            <p class="muted">
+              <span lang="en">// Papers published, posters presented, and working papers.</span>
+              <span lang="pt">// Artigos publicados, pôsteres apresentados e working papers.</span>
+            </p>
+            <ul>
+              <li>Xavier, L. B. (2023) <em>The legend of video games: a link to affordance theory</em>. <span lang="en">Master's Thesis.</span><span lang="pt">Dissertação de Mestrado.</span> <a href="assets/A Link to Affordance Theory - Lucas Busani Xavier.pdf" target="_blank" rel="noopener">PDF</a></li>
+              <li>Dallabrida, Y. M., Xavier, L. B. (2022) <em>Se não consegue vencê-los, junte-se a eles? Pirataria digital como fonte de inovação aberta</em>. EnANPAD 2022. <a href="assets/Se não consegue vencê-los, junte-se a eles.pdf" target="_blank" rel="noopener">PDF</a></li>
+              <li>Xavier, L. B. (2021) <em>Como Comprar se não Está a Venda? Um Estudo sobre Legitimidade e Pirataria na Comunidade Gamer.</em> EnANPAD 2021. <a href="assets/Como Comprar se não Está a Venda.pdf" target="_blank" rel="noopener">PDF</a></li>
+              <li>Videgas, R. R., &amp; Xavier, L. B. (2021). <em>The political use of Twitter by the Federal Prosecution Service in Brazil</em>. Proceedings of the IAPSS Virtual World Congress 2021. <a href="assets/ThePoliticalUseofTwitterbytheMPF.pdf" target="_blank" rel="noopener">PDF</a></li>
+            </ul>
+            <p>
+              <a class="btn" href="https://scholar.google.com/citations?user=tj7KivsAAAAJ&hl=pt-BR" target="_blank" rel="noopener">Google Scholar</a>
+              <a class="btn" href="https://orcid.org/0000-0001-9869-0019" style="margin-left:.5rem" target="_blank" rel="noopener">ORCID</a>
+              <a class="btn" href="https://www.researchgate.net/profile/Lucas_Xavier13?ev=hdr_xprf" style="margin-left:.5rem" target="_blank" rel="noopener">ResearchGate</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ Participate ══ -->
+      <section class="editor" id="participate">
+        <div class="content">
+          <div class="panel">
+            <h1>
+              <span lang="en">Participate in a Study</span>
+              <span lang="pt">Participe de uma Pesquisa</span>
+            </h1>
+            <p class="muted">
+              <span lang="en">// If I need participants for a research project, you can find information about it below.</span>
+              <span lang="pt">// Se precisar de participantes para um projeto de pesquisa, você encontrará as informações abaixo.</span>
+            </p>
+            <div class="card">
+              <h3>
+                <span lang="en">No active studies at this time</span>
+                <span lang="pt">Nenhum estudo ativo no momento</span>
+              </h3>
               <p>
-                <a class="btn" href="https://scholar.google.com/citations?user=tj7KivsAAAAJ&hl=pt-BR" target="_blank" rel="noopener">Google Scholar</a>
-                <a class="btn" href="https://orcid.org/0000-0001-9869-0019" style="margin-left:.5rem" target="_blank" rel="noopener">ORCID</a>
-                <a class="btn" href="https://www.researchgate.net/profile/Lucas_Xavier13?ev=hdr_xprf" style="margin-left:.5rem" target="_blank" rel="noopener">ResearchGate</a>
+                <span lang="en">Check back later or <a href="contact.html">get in touch</a> if you're interested in participating in future research.</span>
+                <span lang="pt">Volte em breve ou <a href="contact.html">entre em contato</a> se tiver interesse em participar de pesquisas futuras.</span>
               </p>
             </div>
-          </article>
+          </div>
         </div>
       </section>
 
-      <section class="editor" id="participate">
-        <div class="editor-inner">
-          <aside class="gutter" aria-hidden="true">
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-          </aside>
-          <article class="content">
-            <div class="panel">
-              <h1>Participate in a Study</h1>
-              <p class="muted">// If I need participants for a research project, you can find information about it bellow.</p>
-              <div class="card">
-                <h3>STUDY EXAMPLE</h3>
-                <p>DESCRIPTION.</p>
-                <p><a class="btn" href="#">LINK</a></p>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
+    </div><!-- /.scroller -->
+  </div><!-- /.main -->
 
-      <section class="editor" id="contact">
-        <div class="editor-inner">
-          <aside class="gutter" aria-hidden="true">
-            <span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span><span class="ln"></span>
-            <span class="ln"></span>
-          </aside>
-          <article class="content">
-            <div class="panel">
-              <h1>Contact</h1>
-              <p>// Feel free to contact me using any of the opotions bellow, I prefer direct e-mail.</p>
-              <p>Email: <a id="em" href="mailto:lucasbx@schulich.yorku.ca">lucasbx@schulich.yorku.ca</a> <button class="btn" id="copy">Copy</button></p>
-              <p>Social: <a href="https://www.linkedin.com/in/lucas-busani-xavier/" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://bsky.app/profile/busanilucas.bsky.social" target="_blank" rel="noopener">Bsky</a> · <a href="https://x.com/BusaniLucas" target="_blank" rel="noopener">X</a> · <a href="https://github.com/lucasbxvr" target="_blank" rel="noopener">GitHub</a></p>
-            </div>
-            <div class="footer">© <span id="y"></span> Lucas Busani Xavier | Built with GitHub Pages.</div>
-          </article>
-        </div>
-        
-      </section>
-    
-      </div>
-</div>
-  </div>
+</div><!-- /.app -->
 
-    <script src="js/main.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
-

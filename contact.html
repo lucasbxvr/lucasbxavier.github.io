@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact · Lucas B. Xavier</title>
+  <meta name="description" content="Get in touch with Lucas B. Xavier — PhD candidate in Marketing at York University." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- ── Title bar ── -->
+  <header class="titlebar" role="banner">
+    <span class="title">
+      <a href="index.html" style="color:inherit; text-decoration:none">lucasbxavier.com</a>
+      <span class="muted"> / </span><span lang="en">contact</span><span lang="pt">contato</span>
+    </span>
+    <span class="spacer"></span>
+    <span class="muted theme-label">Dracula | Monospace</span>
+    <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+      <button class="lang-btn active" data-lang-target="en" aria-pressed="true">EN</button>
+      <button class="lang-btn" data-lang-target="pt" aria-pressed="false">PT</button>
+    </div>
+  </header>
+
+  <!-- ── Sidebar ── -->
+  <nav class="sidebar" id="sidebar" aria-label="Primary navigation">
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z"/>
+      </svg>
+      <span class="toggle-label muted">Menu</span>
+    </button>
+
+    <a class="nav-item" href="index.html" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2 2 9h2v11h6V14h4v6h6V9h2z"/>
+      </svg>
+      <span class="nav-label"><span lang="en">Home</span><span lang="pt">Início</span></span>
+    </a>
+
+    <a class="nav-item" href="blog/index.html" aria-label="Blog">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25ZM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83Z"/>
+      </svg>
+      <span class="nav-label">Blog</span>
+    </a>
+
+    <a class="nav-item active" href="contact.html" aria-label="Contact">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
+      </svg>
+      <span class="nav-label"><span lang="en">Contact</span><span lang="pt">Contato</span></span>
+    </a>
+  </nav>
+
+  <!-- ── Main ── -->
+  <div class="main">
+    <div class="scroller" id="scroller">
+      <section class="editor" id="contact">
+        <div class="content">
+          <div class="panel">
+
+            <h1>
+              <span lang="en">Get in Touch</span>
+              <span lang="pt">Entre em Contato</span>
+            </h1>
+            <p class="muted">
+              <span lang="en">// Email is the best way to reach me. I'm also active on the socials below.</span>
+              <span lang="pt">// E-mail é a melhor forma de me contatar. Também estou ativo nas redes abaixo.</span>
+            </p>
+
+            <div class="contact-grid" style="margin-top:1rem">
+              <div class="contact-card">
+                <h3><span style="color:var(--green)">></span>
+                  <span lang="en"> Email</span><span lang="pt"> E-mail</span>
+                </h3>
+                <p><a id="em" href="mailto:lucasbx@schulich.yorku.ca">lucasbx@schulich.yorku.ca</a></p>
+                <p><button class="btn" id="copy">
+                  <span lang="en">Copy address</span><span lang="pt">Copiar endereço</span>
+                </button></p>
+                <p class="muted" style="font-size:.85rem; margin-top:.5rem">
+                  <span lang="en">I try to respond within a few days. For research inquiries, collaboration proposals, or media requests — email is best.</span>
+                  <span lang="pt">Costumo responder em alguns dias. Para consultas de pesquisa, propostas de colaboração ou solicitações de imprensa — prefiro o e-mail.</span>
+                </p>
+              </div>
+
+              <div class="contact-card">
+                <h3><span style="color:var(--green)">></span>
+                  <span lang="en"> Social</span><span lang="pt"> Redes Sociais</span>
+                </h3>
+                <div class="social-row">
+                  <a class="btn" href="https://www.linkedin.com/in/lucas-busani-xavier/" target="_blank" rel="noopener">LinkedIn</a>
+                  <a class="btn" href="https://bsky.app/profile/busanilucas.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+                  <a class="btn" href="https://x.com/BusaniLucas" target="_blank" rel="noopener">X / Twitter</a>
+                  <a class="btn" href="https://github.com/lucasbxvr" target="_blank" rel="noopener">GitHub</a>
+                </div>
+                <p class="muted" style="font-size:.85rem; margin-top:.75rem">
+                  <span lang="en">I'm most active on Bluesky and LinkedIn. Feel free to DM for quick questions.</span>
+                  <span lang="pt">Sou mais ativo no Bluesky e no LinkedIn. Fique à vontade para me mandar mensagem direta para perguntas rápidas.</span>
+                </p>
+              </div>
+
+              <div class="contact-card">
+                <h3><span style="color:var(--green)">></span>
+                  <span lang="en"> Academic Profiles</span><span lang="pt"> Perfis Acadêmicos</span>
+                </h3>
+                <a href="https://scholar.google.com/citations?user=tj7KivsAAAAJ&hl=pt-BR" target="_blank" rel="noopener">Google Scholar</a>
+                <a href="https://orcid.org/0000-0001-9869-0019" target="_blank" rel="noopener">ORCID</a>
+                <a href="https://www.researchgate.net/profile/Lucas_Xavier13?ev=hdr_xprf" target="_blank" rel="noopener">ResearchGate</a>
+              </div>
+
+              <div class="contact-card">
+                <h3><span style="color:var(--green)">></span>
+                  <span lang="en"> Affiliation</span><span lang="pt"> Afiliação</span>
+                </h3>
+                <p>
+                  <span lang="en">PhD Candidate in Marketing<br>Schulich School of Business<br>York University<br>Toronto, Ontario, Canada</span>
+                  <span lang="pt">Doutorando em Marketing<br>Schulich School of Business<br>York University<br>Toronto, Ontário, Canadá</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="footer">
+              <span lang="en">© <span id="y"></span> Lucas Busani Xavier</span>
+              <span lang="pt">© <span class="yr"></span> Lucas Busani Xavier</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</div>
+<script src="js/main.js"></script>
+<script>document.querySelectorAll('.yr').forEach(e=>e.textContent=new Date().getFullYear())</script>
+</body>
+</html>
