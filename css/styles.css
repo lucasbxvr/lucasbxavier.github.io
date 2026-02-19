@@ -367,8 +367,10 @@ html { scroll-behavior: smooth; }
 .btn:hover { background: #272a3a; text-decoration: none; }
 
 /* ─── i18n ─── */
-[data-lang="en"] [lang="pt"] { display: none !important; }
-[data-lang="pt"] [lang="en"] { display: none !important; }
+/* Translation spans use data-t="en" / data-t="pt" (not the HTML lang attribute,
+   which browsers treat specially and can interfere with CSS matching on GitHub Pages) */
+[data-lang="en"] [data-t="pt"] { display: none !important; }
+[data-lang="pt"] [data-t="en"] { display: none !important; }
 
 /* ─── Blog ─── */
 .post-list { list-style: none; padding: 0; margin: 0; }
