@@ -225,18 +225,15 @@ html { scroll-behavior: smooth; }
 /* ── Home expand chevron ── */
 .home-chevron {
   display: block;
-  /* No margin-left:auto in collapsed — it acts as a flex spacer even at width:0,
-     which pushes the house icon to the left edge when the item is active/hovered */
   margin-left: 0;
   flex-shrink: 0;
-  /* Hidden in collapsed state (no room + confusing without label context) */
   opacity: 0;
   pointer-events: none;
   width: 0;
   overflow: hidden;
   transition: transform 220ms ease, opacity 180ms ease, width 220ms ease;
 }
-/* Reveal only when sidebar is open; restore auto-margin so chevron sits at far right */
+/* Reveal only when sidebar is open; auto-margin pushes chevron to the far right */
 .sidebar.open .home-chevron {
   margin-left: auto;
   opacity: .6;
@@ -244,6 +241,12 @@ html { scroll-behavior: smooth; }
   width: 14px;
 }
 .home-row.expanded .home-chevron { transform: rotate(180deg); }
+
+/* When collapsed, the home-row has three flex children (icon + label + chevron).
+   Even with label and chevron at width:0, the gap between them still offsets the icon.
+   Zeroing the gap in collapsed state keeps the icon perfectly centred. */
+.home-row { gap: 0; }
+.sidebar.open .home-row { gap: .55rem; }
 
 /* ── Subsections ── */
 .subnav {
