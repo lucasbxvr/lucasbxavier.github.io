@@ -224,11 +224,11 @@ html { scroll-behavior: smooth; }
 
 /* ── Home expand chevron ── */
 .home-chevron {
-  /* Always visible — regardless of which page or whether sidebar is open */
   display: block;
-  margin-left: auto;
+  /* No margin-left:auto in collapsed — it acts as a flex spacer even at width:0,
+     which pushes the house icon to the left edge when the item is active/hovered */
+  margin-left: 0;
   flex-shrink: 0;
-  transition: transform 220ms ease;
   /* Hidden in collapsed state (no room + confusing without label context) */
   opacity: 0;
   pointer-events: none;
@@ -236,8 +236,9 @@ html { scroll-behavior: smooth; }
   overflow: hidden;
   transition: transform 220ms ease, opacity 180ms ease, width 220ms ease;
 }
-/* Reveal only when sidebar is open */
+/* Reveal only when sidebar is open; restore auto-margin so chevron sits at far right */
 .sidebar.open .home-chevron {
+  margin-left: auto;
   opacity: .6;
   pointer-events: auto;
   width: 14px;
