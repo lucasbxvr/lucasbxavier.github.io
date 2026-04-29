@@ -1,283 +1,487 @@
 <!doctype html>
-<html lang="en" data-lang="en">
+<html lang="en" data-lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>(function(){var t=localStorage.getItem('nier-theme')||'light',l=localStorage.getItem('lbx-lang')||'en';document.documentElement.dataset.theme=t;document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l==='pt'?'pt-BR':'en');})()</script>
   <title>Lucas B. Xavier · Marketing Researcher</title>
   <meta name="description" content="PhD candidate and marketing researcher. Technology consumption, games, affordances, flow." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23282a36'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='monospace' fill='%23bd93f9'>L</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%233A3530'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='monospace' fill='%23C9C3AB'>L</text></svg>">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="app" id="app">
+<div class="nier-shell">
 
-  <!-- ── Title bar ── -->
-  <header class="titlebar" role="banner">
-    <span class="title">lucasbxavier.com</span>
-    <span class="spacer"></span>
-    <span class="muted theme-label">Dracula | Monospace</span>
-    <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+  <!-- Dot strip top -->
+  <div class="dot-strip" id="dot-top"></div>
+
+  <!-- Nav bar -->
+  <nav class="nier-nav" aria-label="Primary navigation">
+    <a class="nier-nav-item active" href="index.html" aria-current="page">
+      <span class="nav-glyph">◀</span> PROFILE <span class="nav-glyph">▶</span>
+    </a>
+    <a class="nier-nav-item" href="blog/index.html">
+      <span class="nav-glyph">◆</span> BLOG
+    </a>
+    <a class="nier-nav-item" href="contact.html">
+      <span class="nav-glyph">◆</span> CONTACT
+    </a>
+    <div class="nav-controls">
       <button class="lang-btn active" data-lang-target="en" aria-pressed="true">EN</button>
+      <span class="nav-sep" aria-hidden="true">·</span>
       <button class="lang-btn" data-lang-target="pt" aria-pressed="false">PT</button>
+      <span class="nav-sep" aria-hidden="true">|</span>
+      <span class="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme">◐</span>
     </div>
-  </header>
-
-  <!-- ── Sidebar ── -->
-  <nav class="sidebar" id="sidebar" aria-label="Primary navigation">
-
-    <!-- Hamburger / expand -->
-    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <!-- Three-line hamburger -->
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z"/>
-      </svg>
-      <span class="toggle-label muted">Menu</span>
-    </button>
-
-    <!-- Home (with subsection toggle) -->
-    <button class="nav-item home-row active" id="home-row" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12 2 2 9h2v11h6V14h4v6h6V9h2z"/>
-      </svg>
-      <span class="nav-label">
-        <span data-t="en">Home</span>
-        <span data-t="pt">Início</span>
-      </span>
-      <!-- Chevron -->
-      <svg class="home-chevron" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M6 9l6 6 6-6"/>
-      </svg>
-    </button>
-
-    <!-- Subsections (shown when sidebar open + home expanded) -->
-    <div class="subnav" id="subnav">
-      <a class="subnav-item active" href="#about" data-section="about">
-        <span data-t="en">About</span><span data-t="pt">Sobre</span>
-      </a>
-      <a class="subnav-item" href="#projects" data-section="projects">
-        <span data-t="en">Projects</span><span data-t="pt">Projetos</span>
-      </a>
-      <a class="subnav-item" href="#publications" data-section="publications">
-        <span data-t="en">Publications</span><span data-t="pt">Publicações</span>
-      </a>
-      <a class="subnav-item" href="#participate" data-section="participate">
-        <span data-t="en">Participate</span><span data-t="pt">Participe</span>
-      </a>
-    </div>
-
-    <!-- Blog -->
-    <a class="nav-item" href="blog/index.html" aria-label="Blog">
-      <!-- Pencil / edit icon -->
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25ZM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83Z"/>
-      </svg>
-      <span class="nav-label">Blog</span>
-    </a>
-
-    <!-- Contact -->
-    <a class="nav-item" href="contact.html" aria-label="Contact">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
-      </svg>
-      <span class="nav-label">
-        <span data-t="en">Contact</span>
-        <span data-t="pt">Contato</span>
-      </span>
-    </a>
-
   </nav>
 
-  <!-- ── Main ── -->
-  <div class="main">
-    <div class="scroller" id="scroller">
+  <!-- Title bar -->
+  <div class="nier-title-bar">
+    <div class="nier-page-title">PROFILE</div>
+    <div class="nier-page-subtitle">
+      -Unit: Lucas B. Xavier ·
+      <span data-t="en">PhD Candidate, Marketing</span><span data-t="pt">Doutorando, Marketing</span>
+    </div>
+  </div>
 
-      <!-- ══ About ══ -->
-      <section class="editor" id="about">
-        <div class="content">
-          <div class="panel">
-            <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
-              <div class="avatar" style="background-image:url('assets/avatar.jpg');" aria-label="Lucas B. Xavier portrait"></div>
-              <div>
-                <h1>Lucas Busani Xavier <span class="muted">
-                  <span data-t="en">// PhD Candidate · Marketing Researcher</span>
-                  <span data-t="pt">// Doutorando · Pesquisador de Marketing</span>
-                </span></h1>
-                <p class="muted">
-                  <span data-t="en">Focus: technology consumption, video games, sociomateriality.</span>
-                  <span data-t="pt">Foco: consumo de tecnologia, videogames, sociomaterialidade.</span>
-                </p>
-                <p>
-                  <span class="tag">CCT</span>
-                  <span class="tag">Marketing</span>
-                  <span class="tag">Game Studies</span>
-                  <span class="tag">STS</span>
-                </p>
-                <p><a class="btn" href="assets/CV_Lucas_Xavier.pdf" target="_blank" rel="noopener">
-                  <span data-t="en">Download CV</span>
-                  <span data-t="pt">Baixar CV</span>
-                </a></p>
+  <!-- Body -->
+  <div class="nier-body">
+
+    <!-- Left panel: anchor navigation -->
+    <div class="nier-panel-left" role="navigation" aria-label="Sections">
+      <div class="nier-selector-row">
+        <span data-t="en">SELECT SECTION</span><span data-t="pt">SELECIONE</span>
+      </div>
+      <a class="nier-menu-row active" href="#section-about">
+        <span class="row-sq"></span>
+        <span data-t="en">About</span><span data-t="pt">Sobre</span>
+      </a>
+      <a class="nier-menu-row" href="#section-presentations">
+        <span class="row-sq"></span>
+        <span data-t="en">Presentations</span><span data-t="pt">Apresentações</span>
+      </a>
+      <a class="nier-menu-row" href="#section-research">
+        <span class="row-sq"></span>
+        <span data-t="en">Research</span><span data-t="pt">Pesquisa</span>
+      </a>
+      <a class="nier-menu-row" href="#section-publications">
+        <span class="row-sq"></span>
+        <span data-t="en">Publications</span><span data-t="pt">Publicações</span>
+      </a>
+      <a class="nier-menu-row" href="#section-participate">
+        <span class="row-sq"></span>
+        <span data-t="en">Participate</span><span data-t="pt">Participe</span>
+      </a>
+      <a class="nier-menu-row" href="#section-side-projects">
+        <span class="row-sq"></span>
+        <span data-t="en">Side Projects</span><span data-t="pt">Projetos Paralelos</span>
+      </a>
+    </div>
+
+    <!-- Divider -->
+    <div class="nier-divider" aria-hidden="true"></div>
+
+    <!-- Right panel: all sections visible, scroll navigation -->
+    <div class="nier-panel-right">
+
+      <!-- ═══ ABOUT ═══ -->
+      <div class="nier-anchor-section" id="section-about">
+
+        <!-- Profile triple: portrait | unit data | bio -->
+        <div class="profile-triple">
+
+          <!-- Portrait -->
+          <div class="profile-portrait-col">
+            <div class="nier-portrait">
+              <div class="nier-portrait-header">
+                <span class="row-sq"></span>
+                <span data-t="en">UNIT IMG</span><span data-t="pt">IMG UNID.</span>
               </div>
+              <img src="assets/lucas_profile.jpg" alt="Lucas B. Xavier">
             </div>
-
-            <div class="callout" role="note">
-              <strong data-t="en">// About:</strong>
-              <strong data-t="pt">// Sobre:</strong>
-              <span data-t="en"> Lucas B Xavier is a PhD candidate in Marketing at York University's Schulich School of Business. His research explores the consumer culture around technology through the lens of sociomateriality.</span>
-              <span data-t="pt"> Lucas B. Xavier é doutorando em Marketing na Schulich School of Business da York University. Sua pesquisa explora a cultura de consumo em torno da tecnologia sob a perspectiva da sociomaterialidade.</span>
-            </div>
-
-            <h2>
-              <span data-t="en">Current Work</span>
-              <span data-t="pt">Trabalho Atual</span>
-            </h2>
-            <p>
-              <span data-t="en">// Currently working on a project that tries to reconceptualize flow from an affordance theory perspective in the context of video games.</span>
-              <span data-t="pt">// Atualmente trabalhando em um projeto que busca reconceptualizar o estado de fluxo a partir da teoria das affordances no contexto dos videogames.</span>
-            </p>
-
-            <h2>
-              <span data-t="en">Recent Presentations, Talks, and Other</span>
-              <span data-t="pt">Apresentações, Palestras e Outros Recentes</span>
-            </h2>
-            <ul class="muted">
-              <li>[2024-06] CCT Conference Poster: <a href="assets/CCTC24_poster.pdf" target="_blank" rel="noopener">
-                <span data-t="en">Of Affordances and Flow</span>
-                <span data-t="pt">Das Affordances ao Fluxo</span>
-              </a></li>
-              <li>[2024-07] <span data-t="en">Talk at Podcast Impacto by FGV EAESP [pt-br]</span><span data-t="pt">Palestra no Podcast Impacto da FGV EAESP [pt-br]</span> — <a href="https://open.spotify.com/episode/2PqdeuMoC3aYmwjPHttE21?si=j33KPPx2TrqKQIbcoysO8w" target="_blank" rel="noopener">
-                <span data-t="en">Exploring Affordance Theory and Video Games</span>
-                <span data-t="pt">Explorando a Teoria das Affordances e os Videogames</span>
-              </a></li>
-              <li>[2023-04] <span data-t="en">Opinion Article at O Estado de São Paulo [pt-br]</span><span data-t="pt">Artigo de opinião no O Estado de São Paulo [pt-br]</span> — <a href="https://www.estadao.com.br/politica/gestao-politica-e-sociedade/videogames-para-o-bem-ou-para-o-mal/" target="_blank" rel="noopener">
-                <span data-t="en">Video Games: for good or for evil?</span>
-                <span data-t="pt">Videogames: para o bem ou para o mal?</span>
-              </a></li>
-            </ul>
           </div>
-        </div>
-      </section>
 
-      <!-- ══ Projects ══ -->
-      <section class="editor" id="projects">
-        <div class="content">
-          <div class="panel">
-            <h1>
-              <span data-t="en">Projects</span>
-              <span data-t="pt">Projetos</span>
-            </h1>
-            <p class="muted">
-              <span data-t="en">// Current work-in-progress research.</span>
-              <span data-t="pt">// Pesquisas em andamento.</span>
-            </p>
-            <div class="grid cols-2">
-              <div class="card">
-                <h3><span style="color:var(--green)">></span>
-                  <span data-t="en">Flow &amp; Affordances in Game Consumption</span>
-                  <span data-t="pt">Fluxo &amp; Affordances no Consumo de Jogos</span>
-                </h3>
-                <p>
-                  <span data-t="en">How does flow emerge during gameplay experiences? This study explores an answer based on how the affordances of video games enable and constrain flow.</span>
-                  <span data-t="pt">Como o estado de fluxo emerge durante as experiências de jogo? Este estudo investiga uma resposta com base em como as affordances dos videogames habilitam e restringem o fluxo.</span>
-                </p>
-                <p class="muted">
-                  <span data-t="en">Keywords: flow, affordances, occluding edge, walkthrough method</span>
-                  <span data-t="pt">Palavras-chave: fluxo, affordances, borda de oclusão, método walkthrough</span>
-                </p>
+          <!-- Unit data -->
+          <div class="profile-unit-col">
+            <div class="nier-inset">
+              <div class="nier-inset-header">
+                <span class="row-sq"></span>
+                <span data-t="en">UNIT DATA</span><span data-t="pt">DADOS UNID.</span>
               </div>
-              <div class="card">
-                <h3><span style="color:var(--green)">></span>
-                  <span data-t="en">Work or play? How Games Turn Labor into Fun</span>
-                  <span data-t="pt">Trabalho ou jogo? Como Games Transformam Trabalho em Diversão</span>
-                </h3>
-                <p>
-                  <span data-t="en">Drawing on theories of play and game studies, I explore the context of work-themed video games and how they turn labour activities into ludic experiences.</span>
-                  <span data-t="pt">Baseado em teoria de <em>play</em> e <em>game studies</em>, eu exploro o contexto de videogames baseados em empregos e como eles tranformam atividades laborais em experiências lúdicas.</span>
-                </p>
-                <p class="muted">
-                  <span data-t="en">Keywords: video games, play, consumer work, gamification</span>
-                  <span data-t="pt">Palavras-chave: videogames, play, trabalho do consumidor, gamificação</span>
-                </p>
-              </div>
-              <div class="card">
-                <h3><span style="color:var(--green)">></span>
-                  <span data-t="en">Speedrunning vs. e-Sports: Engaging with Competitions in Digital Gaming</span>
-                  <span data-t="pt"><em>Speedrunning vs. e-Sports</em>: Engajando com Competições de Jogos Digitais</span>
-                </h3>
-                <p>
-                  <span data-t="en">In this comparative analysis, I'm interested in how different modes of competition in gaming spaces foster different audiences with diferentes practices, values, and culture.</span>
-                  <span data-t="pt">Nesta análise comparativa, estou interessado em como modos de competição diferentes dentro de video games fomentam audiências diferentes, com práticas, valores e culturas distintas.</span>
-                </p>
-                <p class="muted">
-                  <span data-t="en">Keywords: video games, competition, practice, culture, audience</span>
-                  <span data-t="pt">Palavras-chave: videogames, competição, prática, cultura, audiência</span>
-                </p>
+              <div class="nier-data-rows">
+                <div class="nier-data-row">
+                  <span class="data-label">Name</span>
+                  <span class="data-value">Lucas Busani Xavier</span>
+                </div>
+                <div class="nier-data-row">
+                  <span class="data-label">
+                    <span data-t="en">Position</span><span data-t="pt">Posição</span>
+                  </span>
+                  <span class="data-value">
+                    <span data-t="en">PhD Candidate</span><span data-t="pt">Doutorando</span>
+                  </span>
+                </div>
+                <div class="nier-data-row">
+                  <span class="data-label">Focus</span>
+                  <span class="data-value">
+                    <span data-t="en">Tech · Games · CCT</span><span data-t="pt">Tecnologia · Jogos · CCT</span>
+                  </span>
+                </div>
+                <div class="nier-data-row">
+                  <span class="data-label">
+                    <span data-t="en">School</span><span data-t="pt">Escola</span>
+                  </span>
+                  <span class="data-value">Schulich · York</span>
+                </div>
+                <div class="nier-data-row">
+                  <span class="data-label">
+                    <span data-t="en">Location</span><span data-t="pt">Local</span>
+                  </span>
+                  <span class="data-value">Toronto, CA</span>
+                </div>
+                <div class="nier-data-row" style="border-bottom:none;">
+                  <span class="data-label accent">NO ERROR<span class="nier-cursor"></span></span>
+                  <span class="data-value">
+                    <a class="nier-link" href="assets/CV_Lucas_Xavier.pdf" target="_blank" rel="noopener">
+                      <span data-t="en">Download CV</span><span data-t="pt">Baixar CV</span>
+                    </a>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <!-- ══ Publications ══ -->
-      <section class="editor" id="publications">
-        <div class="content">
-          <div class="panel">
-            <h1>
-              <span data-t="en">Publications</span>
-              <span data-t="pt">Publicações</span>
-            </h1>
-            <p class="muted">
-              <span data-t="en">// Papers published, posters presented, and working papers.</span>
-              <span data-t="pt">// Artigos publicados, pôsteres apresentados e working papers.</span>
-            </p>
-            <ul>
-              <li>Xavier, L. B. (2023) <em>The legend of video games: a link to affordance theory</em>. <span data-t="en">Master's Thesis.</span><span data-t="pt">Dissertação de Mestrado.</span> <a href="assets/A Link to Affordance Theory - Lucas Busani Xavier.pdf" target="_blank" rel="noopener">PDF</a></li>
-              <li>Dallabrida, Y. M., Xavier, L. B. (2022) <em>Se não consegue vencê-los, junte-se a eles? Pirataria digital como fonte de inovação aberta</em>. EnANPAD 2022. <a href="assets/Se não consegue vencê-los, junte-se a eles.pdf" target="_blank" rel="noopener">PDF</a></li>
-              <li>Xavier, L. B. (2021) <em>Como Comprar se não Está a Venda? Um Estudo sobre Legitimidade e Pirataria na Comunidade Gamer.</em> EnANPAD 2021. <a href="assets/Como Comprar se não Está a Venda.pdf" target="_blank" rel="noopener">PDF</a></li>
-              <li>Videgas, R. R., &amp; Xavier, L. B. (2021). <em>The political use of Twitter by the Federal Prosecution Service in Brazil</em>. Proceedings of the IAPSS Virtual World Congress 2021. <a href="assets/ThePoliticalUseofTwitterbytheMPF.pdf" target="_blank" rel="noopener">PDF</a></li>
-            </ul>
-            <p>
-              <a class="btn" href="https://scholar.google.com/citations?user=tj7KivsAAAAJ&hl=pt-BR" target="_blank" rel="noopener">Google Scholar</a>
-              <a class="btn" href="https://orcid.org/0000-0001-9869-0019" style="margin-left:.5rem" target="_blank" rel="noopener">ORCID</a>
-              <a class="btn" href="https://www.researchgate.net/profile/Lucas_Xavier13?ev=hdr_xprf" style="margin-left:.5rem" target="_blank" rel="noopener">ResearchGate</a>
-            </p>
+          <!-- Bio -->
+          <div class="profile-bio-col">
+            <div class="nier-inset">
+              <div class="nier-inset-header">
+                <span class="row-sq"></span>
+                <span data-t="en">BIO</span><span data-t="pt">BIO</span>
+              </div>
+              <div class="nier-data-rows">
+                <p class="prose" style="margin:0;">
+                  <span data-t="en">Lucas B. Xavier is a PhD candidate in Marketing at York University's Schulich School of Business, and President of the Schulich PhD Student Association (SPSA). His research explores the consumer culture of technology — how people consume, appropriate, and make meaning with digital artifacts, from video games to AI platforms. Working at the intersection of consumer culture theory, science and technology studies, and game studies, his work draws on sociomateriality and affordance theory to understand how the material structure of digital objects shapes human experience and practice.</span>
+                  <span data-t="pt">Lucas B. Xavier é doutorando em Marketing na Schulich School of Business da York University, e Presidente da Associação de Estudantes de Doutorado (SPSA). Sua pesquisa explora a cultura de consumo da tecnologia — como as pessoas consomem, se apropriam e constroem sentido com artefatos digitais, de videogames a plataformas de IA. Situado na interseção da teoria da cultura de consumo, estudos de ciência e tecnologia e game studies, seu trabalho recorre à sociomaterialidade e à teoria das affordances para compreender como a estrutura material dos objetos digitais molda a experiência e a prática humana.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.profile-triple -->
+
+        <!-- Keywords as tag blocks -->
+        <div class="nier-inset">
+          <div class="nier-inset-header">
+            <span class="row-sq"></span>
+            <span data-t="en">KEYWORDS</span><span data-t="pt">PALAVRAS-CHAVE</span>
+          </div>
+          <div class="nier-tags">
+            <span class="nier-tag">Consumer Culture Theory</span>
+            <span class="nier-tag">Marketing</span>
+            <span class="nier-tag">Game Studies</span>
+            <span class="nier-tag">STS</span>
+            <span class="nier-tag">Affordances</span>
+            <span class="nier-tag">Sociomateriality</span>
+            <span class="nier-tag">Flow</span>
           </div>
         </div>
-      </section>
 
-      <!-- ══ Participate ══ -->
-      <section class="editor" id="participate">
-        <div class="content">
-          <div class="panel">
-            <h1>
-              <span data-t="en">Participate in a Study</span>
-              <span data-t="pt">Participe de uma Pesquisa</span>
-            </h1>
-            <p class="muted">
-              <span data-t="en">// If I need participants for a research project, you can find information about it below.</span>
-              <span data-t="pt">// Se precisar de participantes para um projeto de pesquisa, você encontrará as informações abaixo.</span>
-            </p>
-            <div class="card">
-              <h3>
-                <span data-t="en">No active studies at this time</span>
-                <span data-t="pt">Nenhum estudo ativo no momento</span>
-              </h3>
-              <p>
-                <span data-t="en">Check back later or <a href="contact.html">get in touch</a> if you're interested in participating in future research.</span>
-                <span data-t="pt">Volte em breve ou <a href="contact.html">entre em contato</a> se tiver interesse em participar de pesquisas futuras.</span>
+      </div><!-- /#section-about -->
+
+      <!-- ═══ PRESENTATIONS ═══ -->
+      <div class="nier-anchor-section" id="section-presentations">
+        <div class="nier-inset">
+          <div class="nier-inset-header">
+            <span class="row-sq"></span>
+            <span data-t="en">PRESENTATIONS · TALKS · OTHER</span>
+            <span data-t="pt">APRESENTAÇÕES · PALESTRAS · OUTROS</span>
+          </div>
+          <div class="nier-data-rows">
+            <div class="nier-data-row col">
+              <span class="data-label">[2024-06] CCT Conference</span>
+              <span class="data-value">
+                <a class="nier-link" href="assets/CCTC24_poster.pdf" target="_blank" rel="noopener">
+                  <span data-t="en">Poster: Of Affordances and Flow</span>
+                  <span data-t="pt">Pôster: Das Affordances ao Fluxo</span>
+                </a>
+              </span>
+            </div>
+            <div class="nier-data-row col">
+              <span class="data-label">[2024-07] Podcast Impacto · FGV EAESP [pt-br]</span>
+              <span class="data-value">
+                <a class="nier-link" href="https://open.spotify.com/episode/2PqdeuMoC3aYmwjPHttE21?si=j33KPPx2TrqKQIbcoysO8w" target="_blank" rel="noopener">
+                  <span data-t="en">Exploring Affordance Theory and Video Games</span>
+                  <span data-t="pt">Explorando a Teoria das Affordances e os Videogames</span>
+                </a>
+              </span>
+            </div>
+            <div class="nier-data-row col" style="border-bottom:none;">
+              <span class="data-label">[2023-04] O Estado de São Paulo [pt-br]</span>
+              <span class="data-value">
+                <a class="nier-link" href="https://www.estadao.com.br/politica/gestao-politica-e-sociedade/videogames-para-o-bem-ou-para-o-mal/" target="_blank" rel="noopener">
+                  <span data-t="en">Video Games: for good or for evil?</span>
+                  <span data-t="pt">Videogames: para o bem ou para o mal?</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div><!-- /#section-presentations -->
+
+      <!-- ═══ RESEARCH ═══ -->
+      <div class="nier-anchor-section" id="section-research">
+
+        <div class="research-grid">
+
+          <!-- Project 1 -->
+          <div class="nier-inset">
+            <div class="nier-inset-header">
+              <span class="row-sq"></span>
+              <span data-t="en">Flow &amp; Affordances in Games</span>
+              <span data-t="pt">Fluxo &amp; Affordances em Jogos</span>
+            </div>
+            <div class="nier-data-rows">
+              <div class="nier-data-row">
+                <span class="data-label">Focus</span>
+                <span class="data-value">
+                  <span data-t="en">Flow emergence during gameplay</span>
+                  <span data-t="pt">Emergência do fluxo em jogos</span>
+                </span>
+              </div>
+              <div class="nier-data-row">
+                <span class="data-label">Theory</span>
+                <span class="data-value">
+                  <span data-t="en">Affordance · Sociomateriality</span>
+                  <span data-t="pt">Affordances · Sociomaterialidade</span>
+                </span>
+              </div>
+              <div class="nier-data-row">
+                <span class="data-label">Method</span>
+                <span class="data-value">
+                  <span data-t="en">Walkthrough · Occluding edge</span>
+                  <span data-t="pt">Walkthrough · Borda de oclusão</span>
+                </span>
+              </div>
+              <div class="nier-data-row" style="border-bottom:none;">
+                <span class="data-label">Status</span>
+                <span class="data-value accent">
+                  <span data-t="en">In preparation</span>
+                  <span data-t="pt">Em preparação</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="nier-inset">
+            <div class="nier-inset-header">
+              <span class="row-sq"></span>
+              <span data-t="en">Work or Play?</span>
+              <span data-t="pt">Trabalho ou Jogo?</span>
+            </div>
+            <div class="nier-data-rows">
+              <div class="nier-data-row">
+                <span class="data-label">Focus</span>
+                <span class="data-value">
+                  <span data-t="en">Ludic labor in work-themed games</span>
+                  <span data-t="pt">Trabalho lúdico em jogos laborais</span>
+                </span>
+              </div>
+              <div class="nier-data-row">
+                <span class="data-label">Theory</span>
+                <span class="data-value">
+                  <span data-t="en">Play theory · Consumer work</span>
+                  <span data-t="pt">Teoria do play · Trabalho do consumidor</span>
+                </span>
+              </div>
+              <div class="nier-data-row" style="border-bottom:none;">
+                <span class="data-label">Status</span>
+                <span class="data-value accent">
+                  <span data-t="en">Working paper</span>
+                  <span data-t="pt">Working paper</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="nier-inset">
+            <div class="nier-inset-header">
+              <span class="row-sq"></span>
+              <span data-t="en">Speedrunning vs. e-Sports</span>
+              <span data-t="pt">Speedrunning vs. e-Sports</span>
+            </div>
+            <div class="nier-data-rows">
+              <div class="nier-data-row">
+                <span class="data-label">Focus</span>
+                <span class="data-value">
+                  <span data-t="en">Competition &amp; audience formation</span>
+                  <span data-t="pt">Competição e formação de audiências</span>
+                </span>
+              </div>
+              <div class="nier-data-row">
+                <span class="data-label">Theory</span>
+                <span class="data-value">
+                  <span data-t="en">Practice theory · Culture</span>
+                  <span data-t="pt">Teoria da prática · Cultura</span>
+                </span>
+              </div>
+              <div class="nier-data-row" style="border-bottom:none;">
+                <span class="data-label">Status</span>
+                <span class="data-value accent">
+                  <span data-t="en">Working paper</span>
+                  <span data-t="pt">Working paper</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.research-grid -->
+
+      </div><!-- /#section-research -->
+
+      <!-- ═══ PUBLICATIONS ═══ -->
+      <div class="nier-anchor-section" id="section-publications">
+
+        <div class="nier-inset">
+          <div class="nier-inset-header">
+            <span class="row-sq"></span>
+            <span data-t="en">PUBLISHED WORKS</span><span data-t="pt">OBRAS PUBLICADAS</span>
+          </div>
+          <div class="nier-data-rows">
+            <div class="nier-data-row col">
+              <span class="data-label">[2023] Master's Thesis</span>
+              <span class="data-value">
+                Xavier, L. B. (2023) <em>The legend of video games: a link to affordance theory</em>.
+                <a class="nier-link" href="assets/A Link to Affordance Theory - Lucas Busani Xavier.pdf" target="_blank" rel="noopener">PDF</a>
+              </span>
+            </div>
+            <div class="nier-data-row col">
+              <span class="data-label">[2022] EnANPAD</span>
+              <span class="data-value">
+                Dallabrida, Y. M., Xavier, L. B. (2022) <em>Se não consegue vencê-los, junte-se a eles? Pirataria digital como fonte de inovação aberta</em>.
+                <a class="nier-link" href="assets/Se não consegue vencê-los, junte-se a eles.pdf" target="_blank" rel="noopener">PDF</a>
+              </span>
+            </div>
+            <div class="nier-data-row col">
+              <span class="data-label">[2021] EnANPAD</span>
+              <span class="data-value">
+                Xavier, L. B. (2021) <em>Como Comprar se não Está a Venda? Um Estudo sobre Legitimidade e Pirataria na Comunidade Gamer.</em>
+                <a class="nier-link" href="assets/Como Comprar se não Está a Venda.pdf" target="_blank" rel="noopener">PDF</a>
+              </span>
+            </div>
+            <div class="nier-data-row col" style="border-bottom:none;">
+              <span class="data-label">[2021] IAPSS</span>
+              <span class="data-value">
+                Videgas, R. R., &amp; Xavier, L. B. (2021). <em>The political use of Twitter by the Federal Prosecution Service in Brazil</em>. Proceedings of the IAPSS Virtual World Congress 2021.
+                <a class="nier-link" href="assets/ThePoliticalUseofTwitterbytheMPF.pdf" target="_blank" rel="noopener">PDF</a>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="nier-inset">
+          <div class="nier-inset-header">
+            <span class="row-sq"></span>
+            <span data-t="en">ACADEMIC PROFILES</span><span data-t="pt">PERFIS ACADÊMICOS</span>
+          </div>
+          <div class="nier-data-rows">
+            <div class="nier-data-row">
+              <span class="data-label">Scholar</span>
+              <span class="data-value">
+                <a class="nier-link" href="https://scholar.google.com/citations?user=tj7KivsAAAAJ&hl=pt-BR" target="_blank" rel="noopener">Google Scholar ▶</a>
+              </span>
+            </div>
+            <div class="nier-data-row">
+              <span class="data-label">ORCID</span>
+              <span class="data-value">
+                <a class="nier-link" href="https://orcid.org/0000-0001-9869-0019" target="_blank" rel="noopener">0000-0001-9869-0019 ▶</a>
+              </span>
+            </div>
+            <div class="nier-data-row" style="border-bottom:none;">
+              <span class="data-label">ResearchGate</span>
+              <span class="data-value">
+                <a class="nier-link" href="https://www.researchgate.net/profile/Lucas_Xavier13?ev=hdr_xprf" target="_blank" rel="noopener">Lucas Xavier ▶</a>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /#section-publications -->
+
+      <!-- ═══ PARTICIPATE ═══ -->
+      <div class="nier-anchor-section" id="section-participate">
+
+        <div class="nier-inset">
+          <div class="nier-inset-header">
+            <span class="row-sq"></span>
+            <span data-t="en">PARTICIPATE IN A STUDY</span>
+            <span data-t="pt">PARTICIPE DE UMA PESQUISA</span>
+          </div>
+          <div class="nier-data-rows">
+            <div class="nier-data-row">
+              <span class="data-label">Status</span>
+              <span class="data-value accent">NO ACTIVE STUDIES</span>
+            </div>
+            <div class="nier-data-row" style="border-bottom:none; padding-top:8px;">
+              <p class="prose" style="margin:0;">
+                <span data-t="en">Check back later or <a class="nier-link" href="contact.html">get in touch</a> if you're interested in participating in future research.</span>
+                <span data-t="pt">Volte em breve ou <a class="nier-link" href="contact.html">entre em contato</a> se tiver interesse em participar de pesquisas futuras.</span>
               </p>
             </div>
           </div>
         </div>
-      </section>
 
-    </div><!-- /.scroller -->
-  </div><!-- /.main -->
+      </div><!-- /#section-participate -->
 
-</div><!-- /.app -->
+      <!-- ═══ SIDE PROJECTS ═══ -->
+      <div class="nier-anchor-section" id="section-side-projects">
 
+        <div class="nier-inset side-project">
+          <div class="nier-inset-header">
+            <span class="row-sq"></span>
+            SIDE PROJECT: STUDIO CARMIM
+          </div>
+          <div class="nier-data-rows">
+            <div class="nier-data-row">
+              <span class="data-label">Type</span>
+              <span class="data-value">
+                <span data-t="en">Indie game studio</span><span data-t="pt">Estúdio independente</span>
+              </span>
+            </div>
+            <div class="nier-data-row">
+              <span class="data-label">Platform</span>
+              <span class="data-value">itch.io</span>
+            </div>
+            <div class="nier-data-row" style="border-bottom:none;">
+              <span class="data-label">Output</span>
+              <span class="data-value">
+                <a class="nier-link" href="https://studio-carmim.itch.io/ardent-flame-lucia-and-the-accursed-mist" target="_blank" rel="noopener">Ardent Flame Lucia and the Accursed Mist ▶</a>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /#section-side-projects -->
+
+      <div class="nier-copyright">© <span class="yr"></span> Lucas B. Xavier</div>
+
+    </div><!-- /.nier-panel-right -->
+  </div><!-- /.nier-body -->
+
+  <!-- Dot strip bottom -->
+  <div class="dot-strip" id="dot-bottom"></div>
+
+  <!-- Status bar -->
+  <div class="nier-statusbar" role="contentinfo">
+    <div class="status-bar-block" aria-hidden="true"></div>
+    <span>© <span class="yr"></span> Lucas B. Xavier · lucasbxavier.github.io</span>
+  </div>
+
+</div><!-- /.nier-shell -->
 <script src="js/main.js"></script>
 </body>
 </html>

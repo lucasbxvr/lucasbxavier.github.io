@@ -1,173 +1,210 @@
 <!doctype html>
-<html lang="en" data-lang="en">
+<html lang="en" data-lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>(function(){var t=localStorage.getItem('nier-theme')||'light',l=localStorage.getItem('lbx-lang')||'en';document.documentElement.dataset.theme=t;document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l==='pt'?'pt-BR':'en');})()</script>
   <title>The Tragic-Comic Realism of AI — Blog · Lucas B. Xavier</title>
   <meta name="description" content="No AI will steal your job if it's already devalued enough. A reflection on how we imagine technology and who it really threatens." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23282a36'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='monospace' fill='%23bd93f9'>L</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%233A3530'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='monospace' fill='%23C9C3AB'>L</text></svg>">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-<div class="app" id="app">
+<div class="nier-shell">
 
-  <header class="titlebar" role="banner">
-    <span class="title">
-      <a href="../index.html" style="color:inherit; text-decoration:none">lucasbxavier.com</a>
-      <span class="muted"> / </span>
-      <a href="index.html" style="color:inherit; text-decoration:none">blog</a>
-      <span class="muted"> / </span>
-      <span data-t="en">the-tragic-comic-realism-of-ai</span><span data-t="pt">o-realismo-tragico-comico-das-ias</span>
-    </span>
-    <span class="spacer"></span>
-    <span class="muted theme-label">Dracula | Monospace</span>
-    <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+  <!-- Dot strip top -->
+  <div class="dot-strip" id="dot-top"></div>
+
+  <!-- Nav bar -->
+  <nav class="nier-nav" aria-label="Primary navigation">
+    <a class="nier-nav-item" href="../index.html">
+      <span class="nav-glyph">◆</span> PROFILE
+    </a>
+    <a class="nier-nav-item active" href="index.html">
+      <span class="nav-glyph">◀</span> BLOG <span class="nav-glyph">▶</span>
+    </a>
+    <a class="nier-nav-item" href="../contact.html">
+      <span class="nav-glyph">◆</span> CONTACT
+    </a>
+    <div class="nav-controls">
       <button class="lang-btn active" data-lang-target="en" aria-pressed="true">EN</button>
+      <span class="nav-sep" aria-hidden="true">·</span>
       <button class="lang-btn" data-lang-target="pt" aria-pressed="false">PT</button>
+      <span class="nav-sep" aria-hidden="true">|</span>
+      <span class="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme">◐</span>
     </div>
-  </header>
-
-  <nav class="sidebar" id="sidebar" aria-label="Primary navigation">
-    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z"/>
-      </svg>
-      <span class="toggle-label muted">Menu</span>
-    </button>
-    <a class="nav-item" href="../index.html" aria-label="Home">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 2 9h2v11h6V14h4v6h6V9h2z"/></svg>
-      <span class="nav-label"><span data-t="en">Home</span><span data-t="pt">Início</span></span>
-    </a>
-    <a class="nav-item active" href="index.html" aria-label="Blog">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25ZM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83Z"/>
-      </svg>
-      <span class="nav-label">Blog</span>
-    </a>
-    <a class="nav-item" href="../contact.html" aria-label="Contact">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
-      </svg>
-      <span class="nav-label"><span data-t="en">Contact</span><span data-t="pt">Contato</span></span>
-    </a>
   </nav>
 
-  <div class="main">
-    <div class="scroller" id="scroller">
-      <section class="editor" id="post">
-        <div class="content">
-          <div class="panel">
-
-            <a class="post-back" href="index.html">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15 18l-6-6 6-6"/></svg>
-              <span data-t="en">Back to blog</span><span data-t="pt">Voltar ao blog</span>
-            </a>
-
-            <!-- ─── EN ─── -->
-            <div data-t="en">
-              <h1>The Tragic-Comic Realism of AI</h1>
-              <div class="post-meta">
-                <span>2025-02-19</span>
-                <span class="tag">Technology</span>
-                <span class="tag">AI</span>
-                <span class="tag">Society</span>
-              </div>
-              <div class="post-content">
-
-                <blockquote>No AI will steal your job if it's already devalued enough.</blockquote>
-
-                <p>The other day I came across a TikTok profile that managed, with a simple joke, to synthesize a reality the world still struggles to understand: AIs — or more precisely, LLMs — probably won't steal your job. Unfortunately.</p>
-
-                <p>The account <em>@iagosantosmemes</em> publishes short, simple comedy sketches — some of questionable taste — but one recurring and successful joke is absolutely brilliant. The script always follows the same structure: a young man and an older man appear with their faces close to the camera; the young man looks distressed and the older man irritated; the older man asks aggressively "Why are you sad?" to which the young man replies "Ah, scared, right? This artificial intelligence could come and take our jobs," and finally the older man snaps back, even angrier: "Get a grip, boy! We're tire repairmen / bricklayers / painters / etc." The sketch varies only in setting, costume, and the profession at the end. The joke is simple but effective: while you'd expect the fear of having your profession taken by an AI to come from white-collar, prestigious, high-rise office jobs, the sketch subverts this by always delivering a more fundamental, working-class, and highly undervalued job — one that is clearly not threatened by anything coming out of Silicon Valley and its future-peddlers.</p>
-
-                <p>The joke, however, brings a very interesting reflection on how we think about — and imagine — technologies and their role in society. And how this way of thinking and imagining is completely distorted by a thoroughly delusional ideology.</p>
-
-                <h2>Beyond Technological Determinism</h2>
-
-                <p>Thinking about the role of technology in society is not new, and it has gone through more determinist and apocalyptic visions (Ellul, 1964) that, even today, dominate much of the common sense on the subject. For Ellul, technique imposes itself on society overwhelmingly, making human action impossible beyond obedience to its supreme law: the endless optimization of processes. Technologies, in this understanding, evolve linearly, perfecting themselves and optimizing processes indefinitely.</p>
-
-                <p>Although the Ellulian vision is a good creative source for apocalyptic science fictions like <em>1984</em> — or a good source of money and power for Silicon Valley's future-marketers like Sam Altman — it has been some decades since his universal and deterministic view has been taken seriously by rigorous academic researchers (Grint and Woolgar, 1992). Many are the calls, even beyond academia, to stop believing in the imaginaries created by these Silicon Valley figures and to seek understandings and ways to create and relate to technologies beyond what is sold to us by Apple, Microsoft, Google, or OpenAI. Evgeny Morozov makes numerous criticisms of Silicon Valley technologies, especially regarding the anti-democratic character of their pursuit of optimizing outcomes regardless of form or logic (Morozov, 2018). Yuk Hui invites us to explore different cosmotechnics, seeking to diversify the ways we think about and interact with technological objects (Hui, 2020).</p>
-
-                <h2>Contradictions Built In</h2>
-
-                <p>A more mature, productive, and liberating vision of technologies is to understand the internal contradictions of technological objects. However much these objects frame the ways in which we interact — not just with them, but with each other through them — this has become increasingly evident. Just browse different platforms and social networks and find, often the same figures, acting and reacting in distinct ways, as each network imposes on its users a way of being, a way of existing within it. I believe there is no doubt, in 2025, about the determining power of technology over people.</p>
-
-                <p>On the other hand, there is no determination of what these objects are, except that which we ourselves impose. You could say that wind blows as only wind can blow and that chickens cluck as only chickens can cluck. But Facebook is not only what it can be. It was imagined, conceived, designed to be a certain way so that it serves the interest and objective of its creator. Unlike Frankenstein's monster, whose individuality surpasses the private desires of its creator, an iPhone will never do anything outside of Apple's conceptions. And beyond the individual morality of its creators, the construction of an imaginary about technology is fundamental in determining how any technological object is developed. Just as technologies determine people's behavior, this determination is itself determined by others situated culturally, historically, and socially.</p>
-
-                <h2>Who Is Really Threatened</h2>
-
-                <p>And so we return to our two comedians, capable of reflecting on the technological insanity we live in. If there was ever a time when someone dared to imagine a future in which the least prestigious, least edifying, least valued tasks in our society could be outsourced to machines, robots, and AIs, today we know with certainty that the opposite is true. These professions will never be threatened by anything coming from Silicon Valley, because their precarity already serves its purpose. It is programmers, academics, accountants, writers, artists, and all other professionals with some remaining prestige — and their careers — that should be afraid. Not because this is the only and predetermined form in which AIs can exist, of course. But because the greatest value of the AIs we see today was never to serve humanity, to increase productivity, to improve processes and, who knows, improve quality of life for the population. No — their one great objective is simple: destroy what we have left. Precarize the remaining dignified jobs that higher classes could still aspire to. It would be tragic, if it weren't comic.</p>
-
-                <h2>References</h2>
-                <ul>
-                  <li>Ellul, Jacques (1964). <em>The Technological Society</em>. Translated by John Wilkinson. New York: Knopf.</li>
-                  <li>Grint, Keith and Steve Woolgar (1992). "Computers, Guns, and Roses: What's Social about Being Shot?" <em>Science, Technology, &amp; Human Values</em>, 17(3), 366–80.</li>
-                  <li>Hui, Yuk (2020). <em>Tecnodiversidade</em>. 1st ed. São Paulo: Ubu Editora.</li>
-                  <li>Morozov, Evgeny (2018). <em>Big Tech: A ascensão dos dados e a morte da política</em>. 1st ed. São Paulo: Ubu Editora.</li>
-                </ul>
-
-                <p class="muted" style="font-size:.85rem; margin-top:1.5rem">
-                  <em>// Note: This is a translated and lightly adapted version of the original Portuguese text. The author will review and revise this translation.</em>
-                </p>
-              </div>
-            </div>
-
-            <!-- ─── PT ─── -->
-            <div data-t="pt">
-              <h1>O Realismo Trágico-Cômico das IAs</h1>
-              <div class="post-meta">
-                <span>2025-02-19</span>
-                <span class="tag">Tecnologia</span>
-                <span class="tag">IA</span>
-                <span class="tag">Sociedade</span>
-              </div>
-              <div class="post-content">
-
-                <blockquote>Nenhuma IA vai roubar o seu trabalho se ele já for desvalorizado o suficiente.</blockquote>
-
-                <p>Outro dia me deparei com um perfil no TikTok que conseguiu, com uma piada simples, sintetizar uma realidade que o mundo ainda custa em entender: as IAs — ou melhor, LLMs, para ser mais preciso — provavelmente não irão roubar seu trabalho, infelizmente.</p>
-
-                <p>O perfil <em>@iagosantosmemes</em> publica pequenos esquetes de comédia simples — alguns de gosto duvidoso —, porém uma piada recorrente e que faz sucesso é absolutamente genial. O roteiro segue sempre a mesma estrutura: um jovem e um senhor aparecem com rostos próximos à câmera; o jovem parece angustiado e o senhor aborrecido; o senhor pergunta com braveza "Por que que você tá triste?" ao qual o jovem responde "Ah, tá com medo, né cara? Essa inteligência artificial aí pode vir e tomar nosso serviço", e, finalmente, o senhor retruca ainda mais bravo "Toma vergonha na sua cara, rapaz! Nós é borracheiro/pedreiro/pintor/etc." O esquete varia apenas na ambientação, figurino e a profissão do final. A piada é simples, mas efetiva: enquanto você esperaria o medo de ter sua profissão tomada por uma IA vindo de empregos de colarinho branco, prestígio, de escritórios da Faria Lima, o esquete subverte entregando um emprego sempre mais fundamental, de base, e altamente desvalorizado — ou seja, um emprego que claramente não está ameaçado por qualquer criação vinda do Vale do Silício e seus marqueteiros do futuro.</p>
-
-                <p>A piada, porém, traz uma reflexão muito interessante sobre como pensamos sobre, como imaginamos tecnologias e seu funcionamento dentro da sociedade. E como essa forma de pensar e imaginar está completamente deturpada por uma ideologia completamente alucinada.</p>
-
-                <h2>Para Além do Determinismo Tecnológico</h2>
-
-                <p>Pensar sobre o papel da tecnologia na sociedade não é algo novo, e já passou por visões mais deterministas e apocalípticas (Ellul, 1964) que, ainda hoje, tomam boa parte do senso comum sobre o assunto. Para Ellul, a técnica (<em>technique</em>) se impõe sobre a sociedade de maneira avassaladora, impossibilitando a ação humana além da obediência da sua lei máxima: a otimização interminável de processos. Tecnologias, nesse entendimento, evoluem linearmente, aperfeiçoando a si mesmas e otimizando processos indefinitivamente.</p>
-
-                <p>Ainda que a visão Elluliana seja uma boa fonte criativa para ficções científicas apocalípticas como <em>1984</em> — ou uma boa fonte de dinheiro e poder para os marqueteiros do futuro do Vale do Silício como Sam Altman —, faz algumas décadas que sua visão universal e determinística não é levada a sério por quem faz pesquisa acadêmica com seriedade (Grint and Woolgar, 1992). Muitas, inclusive, são as chamadas para além da academia para que deixemos de acreditar nos imaginários criados por essas figuras do Vale do Silício e que busquemos entendimentos e formas para que criemos e nos relacionemos com tecnologias para além do que nos é vendido por Apple, Microsoft, Google ou OpenAI. Evgeny Morozov faz inúmeras críticas às tecnologias provenientes do Vale do Silício, em especial no caráter antidemocrático de sua busca por otimizar resultados independente da forma e lógica de resolução (Morozov, 2018). Yuk Hui nos convida a explorar diferentes cosmotécnicas, buscando diversificar as formas com que pensamos sobre e interagimos com objetos tecnológicos (Hui, 2020).</p>
-
-                <h2>Contradições Internas</h2>
-
-                <p>Uma visão mais madura, produtiva, libertadora sobre tecnologias é entender as contradições internas de objetos tecnológicos. Por mais que esses objetos enquadrem as formas com que interagimos — não apenas com eles, mas uns com os outros através deles —, tem se tornado cada vez mais evidente. Basta navegar entre diversas plataformas e redes sociais e encontrar, muitas vezes as mesmas figuras, agindo e reagindo de maneiras distintas, à medida em que cada rede impõe a seus usuários uma forma de ser, uma forma de existir ali dentro. Acredito que não há dúvidas, em 2025, do poder determinante da tecnologia perante as pessoas.</p>
-
-                <p>Por outro lado, não há determinação de como esses objetos são, a não ser aquela que nós mesmos impomos. Pode-se dizer que vento venta como apenas o vento pode ventar e que as galinhas galiham como apenas as galinhas podem galinhar. Mas o Facebook não o é apenas como o pode ser. Ele foi imaginado, concebido, desenhado para ser de uma forma para que sirva o interesse e objetivo de seu criador. Diferente do monstro de Frankenstein, cuja individualidade se sobressai aos desejos privados de seu criador, um iPhone nunca fará algo que não seja dentro das concepções da Apple. E para além da moralidade individual de seus criadores, a construção de um imaginário sobre tecnologia é fundamental na determinação de como qualquer objeto tecnológico é desenvolvido. Tanto quanto as tecnologias determinam o comportamento das pessoas, essa determinação é, em si, determinada por outrem situado cultural, histórico, e socialmente.</p>
-
-                <h2>Quem Realmente Está Ameaçado</h2>
-
-                <p>E então que voltamos aos nossos dois comediantes, capazes de refletir sobre a insanidade tecnológica sob a qual vivemos. Se um dia houve quem ousasse imaginar um futuro em que as tarefas menos prestigiosas, menos edificantes, menos valorizadas de nossa sociedade poderiam ser terceirizadas para máquinas, robôs, e IAs, hoje temos a certeza de que é exatamente o oposto. Essas profissões nunca serão ameaçadas por nada proveniente do Vale do Silício, porque sua precariedade já serve o seu propósito. São os programadores, acadêmicos, contadores, escritores, artistas, e todos os outros profissionais com algum resquício de prestígio — e suas carreiras — que devem ter medo. Não porque essa é a única e predeterminada forma na qual IAs podem existir, é claro. Mas porque o valor maior das IAs que vemos hoje nunca foi de servir à humanidade, de aumentar a produtividade, de melhorar processos e, quem sabe, aumentar a qualidade de vida da população. Não, seu único e grande objetivo é simples: destruir aquilo que nos restou. Precarizar o resto de empregos dignos que classes mais altas ainda podiam almejar. Seria trágico, se não fosse cômico.</p>
-
-                <h2>Referências</h2>
-                <ul>
-                  <li>Ellul, Jacques (1964). <em>The Technological Society</em>. Translated From the French by John Wilkinson. New York: Knopf.</li>
-                  <li>Grint, Keith and Steve Woolgar (1992). "Computers, Guns, and Roses: What's Social about Being Shot?" <em>Science, Technology, &amp; Human Values</em>, 17(3), 366–80.</li>
-                  <li>Hui, Yuk (2020). <em>Tecnodiversidade</em>. 1ª edição. São Paulo: Ubu Editora.</li>
-                  <li>Morozov, Evgeny (2018). <em>Big Tech: A ascensão dos dados e a morte da política</em>. 1ª edição. São Paulo: Ubu Editora.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="footer">© <span id="y"></span> Lucas Busani Xavier</div>
-          </div>
-        </div>
-      </section>
+  <!-- Title bar -->
+  <div class="nier-title-bar">
+    <div class="nier-page-title">
+      <span data-t="en">TRAGIC-COMIC REALISM OF AI</span>
+      <span data-t="pt">REALISMO TRÁGICO-CÔMICO DAS IAS</span>
+    </div>
+    <div class="nier-page-subtitle">
+      -Date: 2025-02-19 ·
+      <span data-t="en">Technology · AI · Society</span>
+      <span data-t="pt">Tecnologia · IA · Sociedade</span>
     </div>
   </div>
 
-</div>
+  <!-- Body -->
+  <div class="nier-body">
+
+    <!-- Left panel: back link only -->
+    <div class="nier-panel-left">
+      <div class="nier-selector-row">
+        <span data-t="en">ENTRY DATA</span><span data-t="pt">DADOS DA ENTRADA</span>
+      </div>
+      <a class="nier-menu-row" href="index.html">
+        <span class="row-sq"></span>
+        <span data-t="en">◀ Back to Blog</span><span data-t="pt">◀ Voltar</span>
+      </a>
+    </div>
+
+    <!-- Divider -->
+    <div class="nier-divider" aria-hidden="true"></div>
+
+    <!-- Right panel: post content -->
+    <div class="nier-panel-right">
+
+      <!-- Metadata panel -->
+      <div class="nier-inset">
+        <div class="nier-inset-header">
+          <span class="row-sq"></span>
+          <span data-t="en">ENTRY DATA</span><span data-t="pt">DADOS DA ENTRADA</span>
+        </div>
+        <div class="nier-data-rows">
+          <div class="nier-data-row">
+            <span class="data-label">
+              <span data-t="en">Date</span><span data-t="pt">Data</span>
+            </span>
+            <span class="data-value">2025-02-19</span>
+          </div>
+          <div class="nier-data-row">
+            <span class="data-label">Tags</span>
+            <span class="data-value">
+              <span data-t="en">Technology · AI · Society</span>
+              <span data-t="pt">Tecnologia · IA · Sociedade</span>
+            </span>
+          </div>
+          <div class="nier-data-row" style="border-bottom:none;">
+            <span class="data-label">Status</span>
+            <span class="data-value accent">
+              <span data-t="en">Published</span><span data-t="pt">Publicado</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EN -->
+      <div data-t="en">
+        <div class="post-meta">
+          <span>2025-02-19</span>
+          <span class="post-tag">Technology</span>
+          <span class="post-tag">AI</span>
+          <span class="post-tag">Society</span>
+        </div>
+        <div class="post-content">
+          <blockquote>No AI will steal your job if it's already devalued enough.</blockquote>
+
+          <p>The other day I came across a TikTok profile that managed, with a simple joke, to synthesize a reality the world still struggles to understand: AIs — or more precisely, LLMs — probably won't steal your job. Unfortunately.</p>
+
+          <p>The account <em>@iagosantosmemes</em> publishes short, simple comedy sketches — some of questionable taste — but one recurring and successful joke is absolutely brilliant. The script always follows the same structure: a young man and an older man appear with their faces close to the camera; the young man looks distressed and the older man irritated; the older man asks aggressively "Why are you sad?" to which the young man replies "Ah, scared, right? This artificial intelligence could come and take our jobs," and finally the older man snaps back, even angrier: "Get a grip, boy! We're tire repairmen / bricklayers / painters / etc." The sketch varies only in setting, costume, and the profession at the end. The joke is simple but effective: while you'd expect the fear of having your profession taken by an AI to come from white-collar, prestigious, high-rise office jobs, the sketch subverts this by always delivering a more fundamental, working-class, and highly undervalued job — one that is clearly not threatened by anything coming out of Silicon Valley and its future-peddlers.</p>
+
+          <p>The joke, however, brings a very interesting reflection on how we think about — and imagine — technologies and their role in society. And how this way of thinking and imagining is completely distorted by a thoroughly delusional ideology.</p>
+
+          <h2>Beyond Technological Determinism</h2>
+
+          <p>Thinking about the role of technology in society is not new, and it has gone through more determinist and apocalyptic visions (Ellul, 1964) that, even today, dominate much of the common sense on the subject. For Ellul, technique imposes itself on society overwhelmingly, making human action impossible beyond obedience to its supreme law: the endless optimization of processes. Technologies, in this understanding, evolve linearly, perfecting themselves and optimizing processes indefinitely.</p>
+
+          <p>Although the Ellulian vision is a good creative source for apocalyptic science fictions like <em>1984</em> — or a good source of money and power for Silicon Valley's future-marketers like Sam Altman — it has been some decades since his universal and deterministic view has been taken seriously by rigorous academic researchers (Grint and Woolgar, 1992). Many are the calls, even beyond academia, to stop believing in the imaginaries created by these Silicon Valley figures and to seek understandings and ways to create and relate to technologies beyond what is sold to us by Apple, Microsoft, Google, or OpenAI. Evgeny Morozov makes numerous criticisms of Silicon Valley technologies, especially regarding the anti-democratic character of their pursuit of optimizing outcomes regardless of form or logic (Morozov, 2018). Yuk Hui invites us to explore different cosmotechnics, seeking to diversify the ways we think about and interact with technological objects (Hui, 2020).</p>
+
+          <h2>Contradictions Built In</h2>
+
+          <p>A more mature, productive, and liberating vision of technologies is to understand the internal contradictions of technological objects. However much these objects frame the ways in which we interact — not just with them, but with each other through them — this has become increasingly evident. Just browse different platforms and social networks and find, often the same figures, acting and reacting in distinct ways, as each network imposes on its users a way of being, a way of existing within it. I believe there is no doubt, in 2025, about the determining power of technology over people.</p>
+
+          <p>On the other hand, there is no determination of what these objects are, except that which we ourselves impose. You could say that wind blows as only wind can blow and that chickens cluck as only chickens can cluck. But Facebook is not only what it can be. It was imagined, conceived, designed to be a certain way so that it serves the interest and objective of its creator. Unlike Frankenstein's monster, whose individuality surpasses the private desires of its creator, an iPhone will never do anything outside of Apple's conceptions. And beyond the individual morality of its creators, the construction of an imaginary about technology is fundamental in determining how any technological object is developed. Just as technologies determine people's behavior, this determination is itself determined by others situated culturally, historically, and socially.</p>
+
+          <h2>Who Is Really Threatened</h2>
+
+          <p>And so we return to our two comedians, capable of reflecting on the technological insanity we live in. If there was ever a time when someone dared to imagine a future in which the least prestigious, least edifying, least valued tasks in our society could be outsourced to machines, robots, and AIs, today we know with certainty that the opposite is true. These professions will never be threatened by anything coming from Silicon Valley, because their precarity already serves its purpose. It is programmers, academics, accountants, writers, artists, and all other professionals with some remaining prestige — and their careers — that should be afraid. Not because this is the only and predetermined form in which AIs can exist, of course. But because the greatest value of the AIs we see today was never to serve humanity, to increase productivity, to improve processes and, who knows, improve quality of life for the population. No — their one great objective is simple: destroy what we have left. Precarize the remaining dignified jobs that higher classes could still aspire to. It would be tragic, if it weren't comic.</p>
+
+          <h2>References</h2>
+          <ul>
+            <li>Ellul, Jacques (1964). <em>The Technological Society</em>. Translated by John Wilkinson. New York: Knopf.</li>
+            <li>Grint, Keith and Steve Woolgar (1992). "Computers, Guns, and Roses: What's Social about Being Shot?" <em>Science, Technology, &amp; Human Values</em>, 17(3), 366–80.</li>
+            <li>Hui, Yuk (2020). <em>Tecnodiversidade</em>. 1st ed. São Paulo: Ubu Editora.</li>
+            <li>Morozov, Evgeny (2018). <em>Big Tech: A ascensão dos dados e a morte da política</em>. 1st ed. São Paulo: Ubu Editora.</li>
+          </ul>
+
+          <p style="font-size:10px; color:var(--text-muted); margin-top:1.5rem; font-style:italic;">
+            // Note: This is a translated and lightly adapted version of the original Portuguese text. The author will review and revise this translation.
+          </p>
+        </div>
+      </div>
+
+      <!-- PT -->
+      <div data-t="pt">
+        <div class="post-meta">
+          <span>2025-02-19</span>
+          <span class="post-tag">Tecnologia</span>
+          <span class="post-tag">IA</span>
+          <span class="post-tag">Sociedade</span>
+        </div>
+        <div class="post-content">
+          <blockquote>Nenhuma IA vai roubar o seu trabalho se ele já for desvalorizado o suficiente.</blockquote>
+
+          <p>Outro dia me deparei com um perfil no TikTok que conseguiu, com uma piada simples, sintetizar uma realidade que o mundo ainda custa em entender: as IAs — ou melhor, LLMs, para ser mais preciso — provavelmente não irão roubar seu trabalho, infelizmente.</p>
+
+          <p>O perfil <em>@iagosantosmemes</em> publica pequenos esquetes de comédia simples — alguns de gosto duvidoso —, porém uma piada recorrente e que faz sucesso é absolutamente genial. O roteiro segue sempre a mesma estrutura: um jovem e um senhor aparecem com rostos próximos à câmera; o jovem parece angustiado e o senhor aborrecido; o senhor pergunta com braveza "Por que que você tá triste?" ao qual o jovem responde "Ah, tá com medo, né cara? Essa inteligência artificial aí pode vir e tomar nosso serviço", e, finalmente, o senhor retruca ainda mais bravo "Toma vergonha na sua cara, rapaz! Nós é borracheiro/pedreiro/pintor/etc." O esquete varia apenas na ambientação, figurino e a profissão do final. A piada é simples, mas efetiva: enquanto você esperaria o medo de ter sua profissão tomada por uma IA vindo de empregos de colarinho branco, prestígio, de escritórios da Faria Lima, o esquete subverte entregando um emprego sempre mais fundamental, de base, e altamente desvalorizado — ou seja, um emprego que claramente não está ameaçado por qualquer criação vinda do Vale do Silício e seus marqueteiros do futuro.</p>
+
+          <p>A piada, porém, traz uma reflexão muito interessante sobre como pensamos sobre, como imaginamos tecnologias e seu funcionamento dentro da sociedade. E como essa forma de pensar e imaginar está completamente deturpada por uma ideologia completamente alucinada.</p>
+
+          <h2>Para Além do Determinismo Tecnológico</h2>
+
+          <p>Pensar sobre o papel da tecnologia na sociedade não é algo novo, e já passou por visões mais deterministas e apocalípticas (Ellul, 1964) que, ainda hoje, tomam boa parte do senso comum sobre o assunto. Para Ellul, a técnica (<em>technique</em>) se impõe sobre a sociedade de maneira avassaladora, impossibilitando a ação humana além da obediência da sua lei máxima: a otimização interminável de processos. Tecnologias, nesse entendimento, evoluem linearmente, aperfeiçoando a si mesmas e otimizando processos indefinitivamente.</p>
+
+          <p>Ainda que a visão Elluliana seja uma boa fonte criativa para ficções científicas apocalípticas como <em>1984</em> — ou uma boa fonte de dinheiro e poder para os marqueteiros do futuro do Vale do Silício como Sam Altman —, faz algumas décadas que sua visão universal e determinística não é levada a sério por quem faz pesquisa acadêmica com seriedade (Grint and Woolgar, 1992). Muitas, inclusive, são as chamadas para além da academia para que deixemos de acreditar nos imaginários criados por essas figuras do Vale do Silício e que busquemos entendimentos e formas para que criemos e nos relacionemos com tecnologias para além do que nos é vendido por Apple, Microsoft, Google ou OpenAI. Evgeny Morozov faz inúmeras críticas às tecnologias provenientes do Vale do Silício, em especial no caráter antidemocrático de sua busca por otimizar resultados independente da forma e lógica de resolução (Morozov, 2018). Yuk Hui nos convida a explorar diferentes cosmotécnicas, buscando diversificar as formas com que pensamos sobre e interagimos com objetos tecnológicos (Hui, 2020).</p>
+
+          <h2>Contradições Internas</h2>
+
+          <p>Uma visão mais madura, produtiva, libertadora sobre tecnologias é entender as contradições internas de objetos tecnológicos. Por mais que esses objetos enquadrem as formas com que interagimos — não apenas com eles, mas uns com os outros através deles —, tem se tornado cada vez mais evidente. Basta navegar entre diversas plataformas e redes sociais e encontrar, muitas vezes as mesmas figuras, agindo e reagindo de maneiras distintas, à medida em que cada rede impõe a seus usuários uma forma de ser, uma forma de existir ali dentro. Acredito que não há dúvidas, em 2025, do poder determinante da tecnologia perante as pessoas.</p>
+
+          <p>Por outro lado, não há determinação de como esses objetos são, a não ser aquela que nós mesmos impomos. Pode-se dizer que vento venta como apenas o vento pode ventar e que as galinhas galiham como apenas as galinhas podem galinhar. Mas o Facebook não o é apenas como o pode ser. Ele foi imaginado, concebido, desenhado para ser de uma forma para que sirva o interesse e objetivo de seu criador. Diferente do monstro de Frankenstein, cuja individualidade se sobressai aos desejos privados de seu criador, um iPhone nunca fará algo que não seja dentro das concepções da Apple. E para além da moralidade individual de seus criadores, a construção de um imaginário sobre tecnologia é fundamental na determinação de como qualquer objeto tecnológico é desenvolvido. Tanto quanto as tecnologias determinam o comportamento das pessoas, essa determinação é, em si, determinada por outrem situado cultural, histórico, e socialmente.</p>
+
+          <h2>Quem Realmente Está Ameaçado</h2>
+
+          <p>E então que voltamos aos nossos dois comediantes, capazes de refletir sobre a insanidade tecnológica sob a qual vivemos. Se um dia houve quem ousasse imaginar um futuro em que as tarefas menos prestigiosas, menos edificantes, menos valorizadas de nossa sociedade poderiam ser terceirizadas para máquinas, robôs, e IAs, hoje temos a certeza de que é exatamente o oposto. Essas profissões nunca serão ameaçadas por nada proveniente do Vale do Silício, porque sua precariedade já serve o seu propósito. São os programadores, acadêmicos, contadores, escritores, artistas, e todos os outros profissionais com algum resquício de prestígio — e suas carreiras — que devem ter medo. Não porque essa é a única e predeterminada forma na qual IAs podem existir, é claro. Mas porque o valor maior das IAs que vemos hoje nunca foi de servir à humanidade, de aumentar a produtividade, de melhorar processos e, quem sabe, aumentar a qualidade de vida da população. Não, seu único e grande objetivo é simples: destruir aquilo que nos restou. Precarizar o resto de empregos dignos que classes mais altas ainda podiam almejar. Seria trágico, se não fosse cômico.</p>
+
+          <h2>Referências</h2>
+          <ul>
+            <li>Ellul, Jacques (1964). <em>The Technological Society</em>. Translated From the French by John Wilkinson. New York: Knopf.</li>
+            <li>Grint, Keith and Steve Woolgar (1992). "Computers, Guns, and Roses: What's Social about Being Shot?" <em>Science, Technology, &amp; Human Values</em>, 17(3), 366–80.</li>
+            <li>Hui, Yuk (2020). <em>Tecnodiversidade</em>. 1ª edição. São Paulo: Ubu Editora.</li>
+            <li>Morozov, Evgeny (2018). <em>Big Tech: A ascensão dos dados e a morte da política</em>. 1ª edição. São Paulo: Ubu Editora.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nier-copyright">© <span class="yr"></span> Lucas Busani Xavier</div>
+
+    </div><!-- /.nier-panel-right -->
+  </div><!-- /.nier-body -->
+
+  <!-- Dot strip bottom -->
+  <div class="dot-strip" id="dot-bottom"></div>
+
+  <!-- Status bar -->
+  <div class="nier-statusbar" role="contentinfo">
+    <div class="status-bar-block" aria-hidden="true"></div>
+    <span>© <span class="yr"></span> Lucas B. Xavier · lucasbxavier.github.io</span>
+  </div>
+
+</div><!-- /.nier-shell -->
 <script src="../js/main.js"></script>
 </body>
 </html>

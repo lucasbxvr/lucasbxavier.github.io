@@ -1,137 +1,65 @@
 /* ═══════════════════════════════════════════
    lucasbxavier.com — main.js
+   YoRHa Interface · NieR:Automata-inspired
    ═══════════════════════════════════════════ */
 
-// ── Copyright year ──
-document.querySelectorAll('#y').forEach(el => el.textContent = new Date().getFullYear())
-
-// ── Copy email ──
-const copyBtn = document.getElementById('copy')
-if (copyBtn) {
-  copyBtn.addEventListener('click', () => {
-    const em = document.getElementById('em')
-    if (!em) return
-    navigator.clipboard.writeText(em.textContent.trim()).then(() => {
-      const lang = document.documentElement.dataset.lang
-      copyBtn.querySelector('[lang="en"]') && (copyBtn.querySelector('[lang="en"]').textContent = 'Copied!')
-      copyBtn.querySelector('[lang="pt"]') && (copyBtn.querySelector('[lang="pt"]').textContent = 'Copiado!')
-      setTimeout(() => {
-        copyBtn.querySelector('[lang="en"]') && (copyBtn.querySelector('[lang="en"]').textContent = 'Copy address')
-        copyBtn.querySelector('[lang="pt"]') && (copyBtn.querySelector('[lang="pt"]').textContent = 'Copiar endereço')
-      }, 1500)
-    }).catch(() => {})
-  })
-}
-
-// ═══════════════════════════════════════════
-// SIDEBAR
-// ═══════════════════════════════════════════
-
-const app        = document.getElementById('app')
-const sidebar    = document.getElementById('sidebar')
-const toggleBtn  = document.getElementById('sidebar-toggle')
-const homeRow    = document.getElementById('home-row')   // only on index.html
-const subnav     = document.getElementById('subnav')     // only on index.html
-
-// Sidebar state is in-memory only — does NOT persist across page navigations.
-// This prevents the sidebar from appearing to "expand by itself" when you click
-// a nav link to go to another page.
-
-function openSidebar() {
-  sidebar.classList.add('open')
-  app.classList.add('sidebar-open')
-  toggleBtn.setAttribute('aria-expanded', 'true')
-}
-
-function closeSidebar() {
-  sidebar.classList.remove('open')
-  app.classList.remove('sidebar-open')
-  toggleBtn.setAttribute('aria-expanded', 'false')
-  if (subnav) subnav.classList.remove('visible')
-  if (homeRow) homeRow.classList.remove('expanded')
-}
-
-function openSubnav() {
-  if (!subnav || !homeRow) return
-  subnav.classList.add('visible')
-  homeRow.classList.add('expanded')
-  homeRow.setAttribute('aria-expanded', 'true')
-}
-
-function closeSubnav() {
-  if (!subnav || !homeRow) return
-  subnav.classList.remove('visible')
-  homeRow.classList.remove('expanded')
-  homeRow.setAttribute('aria-expanded', 'false')
-}
-
-// Sidebar always starts collapsed on every page load — no state restoration.
-
-// Toggle sidebar on hamburger click only
-if (toggleBtn) {
-  toggleBtn.addEventListener('click', () => {
-    if (sidebar.classList.contains('open')) {
-      closeSidebar()
-    } else {
-      openSidebar()
+// ── Dot strip generator ──
+function generateDots(el) {
+  if (!el) return
+  const gaps = [4, 6, 8, 10, 12, 14]
+  let s = el.id === 'dot-top' ? 7 : 13
+  function rand() {
+    s = (s * 1664525 + 1013904223) & 0x7fffffff
+    return s / 0x7fffffff
+  }
+  const frag = document.createDocumentFragment()
+  const width = Math.max(window.innerWidth || 0, 1400)
+  let x = 0
+  while (x < width + 60) {
+    const count = Math.floor(rand() * 4) + 1
+    for (let i = 0; i < count; i++) {
+      const d = document.createElement('div')
+      d.className = 'dot'
+      frag.appendChild(d)
     }
-  })
+    const gap = gaps[Math.floor(rand() * gaps.length)]
+    const sp = document.createElement('div')
+    sp.style.width = gap + 'px'
+    sp.style.flexShrink = '0'
+    frag.appendChild(sp)
+    x += count * 9 + gap
+  }
+  el.appendChild(frag)
 }
 
-// Toggle home subsections on homeRow click (only on index.html)
-// Only responds to the chevron / label area when sidebar is open.
-// When sidebar is closed, homeRow click does nothing extra — the button
-// has no href so it's purely a toggle; user must open sidebar via hamburger first.
-if (homeRow) {
-  homeRow.addEventListener('click', () => {
-    // Only toggle subnav when sidebar is already open
-    if (!sidebar.classList.contains('open')) return
-    if (homeRow.classList.contains('expanded')) {
-      closeSubnav()
-    } else {
-      openSubnav()
-    }
-  })
-}
-
-// Smooth-scroll for subnav anchor links (index.html only)
-document.querySelectorAll('.subnav-item[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault()
-    const target = document.querySelector(a.getAttribute('href'))
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    // Update active state
-    document.querySelectorAll('.subnav-item').forEach(s => s.classList.remove('active'))
-    a.classList.add('active')
-  })
+document.addEventListener('DOMContentLoaded', () => {
+  generateDots(document.getElementById('dot-top'))
+  generateDots(document.getElementById('dot-bottom'))
 })
 
-// IntersectionObserver: highlight active subnav item while scrolling (index.html)
-const sections = document.querySelectorAll('.editor[id]')
-if (sections.length) {
-  const scroller = document.getElementById('scroller')
+// ── Theme toggle ──
+;(function () {
+  const html = document.documentElement
+  const saved = localStorage.getItem('nier-theme') || 'light'
+  html.dataset.theme = saved
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id
-        document.querySelectorAll('.subnav-item').forEach(s => {
-          s.classList.toggle('active', s.dataset.section === id)
-        })
+  const toggle = document.querySelector('.theme-toggle')
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const next = html.dataset.theme === 'dark' ? 'light' : 'dark'
+      html.dataset.theme = next
+      localStorage.setItem('nier-theme', next)
+    })
+    toggle.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault()
+        toggle.click()
       }
     })
-  }, {
-    root: scroller || null,
-    rootMargin: '0px 0px -55% 0px',
-    threshold: 0.05
-  })
+  }
+})()
 
-  sections.forEach(sec => observer.observe(sec))
-}
-
-// ═══════════════════════════════════════════
-// LANGUAGE TOGGLE
-// ═══════════════════════════════════════════
+// ── Language toggle ──
 ;(function () {
   const STORAGE_KEY = 'lbx-lang'
   const htmlEl = document.documentElement
@@ -147,12 +75,58 @@ if (sections.length) {
     })
   }
 
-  // Restore saved preference
   const saved = localStorage.getItem(STORAGE_KEY)
   if (saved === 'pt' || saved === 'en') setLang(saved)
 
-  // Wire up buttons
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => setLang(btn.dataset.langTarget))
   })
 })()
+
+// ── Scroll-based anchor highlighting ──
+;(function () {
+  const sections = document.querySelectorAll('.nier-anchor-section[id]')
+  if (!sections.length) return
+
+  const linkMap = new Map()
+  document.querySelectorAll('.nier-panel-left a.nier-menu-row[href]').forEach(link => {
+    const id = link.getAttribute('href').replace(/^#/, '')
+    linkMap.set(id, link)
+  })
+  if (!linkMap.size) return
+
+  function setActive(id) {
+    linkMap.forEach((link, lid) => link.classList.toggle('active', lid === id))
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id)
+    })
+  }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 })
+
+  sections.forEach(s => observer.observe(s))
+  if (sections[0]) setActive(sections[0].id)
+})()
+
+// ── Copy email ──
+const copyBtn = document.getElementById('copy')
+if (copyBtn) {
+  copyBtn.addEventListener('click', () => {
+    const em = document.getElementById('em')
+    if (!em) return
+    navigator.clipboard.writeText(em.textContent.trim()).then(() => {
+      const spanEn = copyBtn.querySelector('[data-t="en"]')
+      const spanPt = copyBtn.querySelector('[data-t="pt"]')
+      if (spanEn) spanEn.textContent = 'Copied!'
+      if (spanPt) spanPt.textContent = 'Copiado!'
+      setTimeout(() => {
+        if (spanEn) spanEn.textContent = 'Copy address'
+        if (spanPt) spanPt.textContent = 'Copiar endereço'
+      }, 1500)
+    }).catch(() => {})
+  })
+}
+
+// ── Copyright year ──
+document.querySelectorAll('.yr').forEach(el => el.textContent = new Date().getFullYear())

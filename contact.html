@@ -1,143 +1,210 @@
 <!doctype html>
-<html lang="en" data-lang="en">
+<html lang="en" data-lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>(function(){var t=localStorage.getItem('nier-theme')||'light',l=localStorage.getItem('lbx-lang')||'en';document.documentElement.dataset.theme=t;document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l==='pt'?'pt-BR':'en');})()</script>
   <title>Contact · Lucas B. Xavier</title>
   <meta name="description" content="Get in touch with Lucas B. Xavier — PhD candidate in Marketing at York University." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23282a36'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='monospace' fill='%23bd93f9'>L</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%233A3530'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='monospace' fill='%23C9C3AB'>L</text></svg>">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="app" id="app">
+<div class="nier-shell">
 
-  <!-- ── Title bar ── -->
-  <header class="titlebar" role="banner">
-    <span class="title">
-      <a href="index.html" style="color:inherit; text-decoration:none">lucasbxavier.com</a>
-      <span class="muted"> / </span><span data-t="en">contact</span><span data-t="pt">contato</span>
-    </span>
-    <span class="spacer"></span>
-    <span class="muted theme-label">Dracula | Monospace</span>
-    <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+  <!-- Dot strip top -->
+  <div class="dot-strip" id="dot-top"></div>
+
+  <!-- Nav bar -->
+  <nav class="nier-nav" aria-label="Primary navigation">
+    <a class="nier-nav-item" href="index.html">
+      <span class="nav-glyph">◆</span> PROFILE
+    </a>
+    <a class="nier-nav-item" href="blog/index.html">
+      <span class="nav-glyph">◆</span> BLOG
+    </a>
+    <a class="nier-nav-item active" href="contact.html" aria-current="page">
+      <span class="nav-glyph">◀</span> CONTACT <span class="nav-glyph">▶</span>
+    </a>
+    <div class="nav-controls">
       <button class="lang-btn active" data-lang-target="en" aria-pressed="true">EN</button>
+      <span class="nav-sep" aria-hidden="true">·</span>
       <button class="lang-btn" data-lang-target="pt" aria-pressed="false">PT</button>
+      <span class="nav-sep" aria-hidden="true">|</span>
+      <span class="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme">◐</span>
     </div>
-  </header>
-
-  <!-- ── Sidebar ── -->
-  <nav class="sidebar" id="sidebar" aria-label="Primary navigation">
-    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z"/>
-      </svg>
-      <span class="toggle-label muted">Menu</span>
-    </button>
-
-    <a class="nav-item" href="index.html" aria-label="Home">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12 2 2 9h2v11h6V14h4v6h6V9h2z"/>
-      </svg>
-      <span class="nav-label"><span data-t="en">Home</span><span data-t="pt">Início</span></span>
-    </a>
-
-    <a class="nav-item" href="blog/index.html" aria-label="Blog">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25ZM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83Z"/>
-      </svg>
-      <span class="nav-label">Blog</span>
-    </a>
-
-    <a class="nav-item active" href="contact.html" aria-label="Contact">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
-      </svg>
-      <span class="nav-label"><span data-t="en">Contact</span><span data-t="pt">Contato</span></span>
-    </a>
   </nav>
 
-  <!-- ── Main ── -->
-  <div class="main">
-    <div class="scroller" id="scroller">
-      <section class="editor" id="contact">
-        <div class="content">
-          <div class="panel">
-
-            <h1>
-              <span data-t="en">Get in Touch</span>
-              <span data-t="pt">Entre em Contato</span>
-            </h1>
-            <p class="muted">
-              <span data-t="en">// Email is the best way to reach me. I'm also active on the socials below.</span>
-              <span data-t="pt">// E-mail é a melhor forma de me contatar. Também estou ativo nas redes abaixo.</span>
-            </p>
-
-            <div class="contact-grid" style="margin-top:1rem">
-              <div class="contact-card">
-                <h3><span style="color:var(--green)">></span>
-                  <span data-t="en"> Email</span><span data-t="pt"> E-mail</span>
-                </h3>
-                <p><a id="em" href="mailto:lucasbx@schulich.yorku.ca">lucasbx@schulich.yorku.ca</a></p>
-                <p><button class="btn" id="copy">
-                  <span data-t="en">Copy address</span><span data-t="pt">Copiar endereço</span>
-                </button></p>
-                <p class="muted" style="font-size:.85rem; margin-top:.5rem">
-                  <span data-t="en">I try to respond within a few days. For research inquiries, collaboration proposals, or media requests — email is best.</span>
-                  <span data-t="pt">Costumo responder em alguns dias. Para consultas de pesquisa, propostas de colaboração ou solicitações de imprensa — prefiro o e-mail.</span>
-                </p>
-              </div>
-
-              <div class="contact-card">
-                <h3><span style="color:var(--green)">></span>
-                  <span data-t="en"> Social</span><span data-t="pt"> Redes Sociais</span>
-                </h3>
-                <div class="social-row">
-                  <a class="btn" href="https://www.linkedin.com/in/lucas-busani-xavier/" target="_blank" rel="noopener">LinkedIn</a>
-                  <a class="btn" href="https://bsky.app/profile/busanilucas.bsky.social" target="_blank" rel="noopener">Bluesky</a>
-                  <a class="btn" href="https://x.com/BusaniLucas" target="_blank" rel="noopener">X / Twitter</a>
-                  <a class="btn" href="https://github.com/lucasbxvr" target="_blank" rel="noopener">GitHub</a>
-                </div>
-                <p class="muted" style="font-size:.85rem; margin-top:.75rem">
-                  <span data-t="en">I'm most active on Bluesky and LinkedIn. Feel free to DM for quick questions.</span>
-                  <span data-t="pt">Sou mais ativo no Bluesky e no LinkedIn. Fique à vontade para me mandar mensagem direta para perguntas rápidas.</span>
-                </p>
-              </div>
-
-              <div class="contact-card">
-                <h3><span style="color:var(--green)">></span>
-                  <span data-t="en"> Academic Profiles</span><span data-t="pt"> Perfis Acadêmicos</span>
-                </h3>
-                <a href="https://scholar.google.com/citations?user=tj7KivsAAAAJ&hl=pt-BR" target="_blank" rel="noopener">Google Scholar</a>
-                <a href="https://orcid.org/0000-0001-9869-0019" target="_blank" rel="noopener">ORCID</a>
-                <a href="https://www.researchgate.net/profile/Lucas_Xavier13?ev=hdr_xprf" target="_blank" rel="noopener">ResearchGate</a>
-              </div>
-
-              <div class="contact-card">
-                <h3><span style="color:var(--green)">></span>
-                  <span data-t="en"> Affiliation</span><span data-t="pt"> Afiliação</span>
-                </h3>
-                <p>
-                  <span data-t="en">PhD Candidate in Marketing<br>Schulich School of Business<br>York University<br>Toronto, Ontario, Canada</span>
-                  <span data-t="pt">Doutorando em Marketing<br>Schulich School of Business<br>York University<br>Toronto, Ontário, Canadá</span>
-                </p>
-              </div>
-            </div>
-
-            <div class="footer">
-              <span data-t="en">© <span id="y"></span> Lucas Busani Xavier</span>
-              <span data-t="pt">© <span class="yr"></span> Lucas Busani Xavier</span>
-            </div>
-          </div>
-        </div>
-      </section>
+  <!-- Title bar -->
+  <div class="nier-title-bar">
+    <div class="nier-page-title">CONTACT</div>
+    <div class="nier-page-subtitle">
+      -<span data-t="en">Channel: Direct</span><span data-t="pt">Canal: Direto</span>
+      · lucasbx@schulich.yorku.ca
     </div>
   </div>
 
-</div>
+  <!-- Body: single panel, 2-column contact grid -->
+  <div class="nier-single-panel">
+    <div class="contact-grid">
+
+      <!-- Email card -->
+      <div class="nier-inset">
+        <div class="nier-inset-header">
+          <span class="row-sq"></span>
+          <span data-t="en">EMAIL</span><span data-t="pt">E-MAIL</span>
+        </div>
+        <div class="nier-data-rows">
+          <div class="nier-data-row">
+            <span class="data-label">
+              <span data-t="en">Address</span><span data-t="pt">Endereço</span>
+            </span>
+            <span class="data-value">
+              <a class="nier-link" id="em" href="mailto:lucasbx@schulich.yorku.ca">lucasbx@schulich.yorku.ca</a>
+            </span>
+          </div>
+          <div class="nier-data-row">
+            <span class="data-label">
+              <span data-t="en">Response</span><span data-t="pt">Resposta</span>
+            </span>
+            <span class="data-value">
+              <span data-t="en">Within a few days</span><span data-t="pt">Em alguns dias</span>
+            </span>
+          </div>
+          <div class="nier-data-row" style="border-bottom:none;">
+            <span class="data-label"></span>
+            <span class="data-value">
+              <button class="nier-btn" id="copy">
+                <span data-t="en">Copy address</span><span data-t="pt">Copiar endereço</span>
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social card -->
+      <div class="nier-inset">
+        <div class="nier-inset-header">
+          <span class="row-sq"></span>
+          <span data-t="en">SOCIAL</span><span data-t="pt">REDES SOCIAIS</span>
+        </div>
+        <div class="nier-data-rows">
+          <div class="nier-data-row">
+            <span class="data-label">Bluesky</span>
+            <span class="data-value">
+              <a class="nier-link" href="https://bsky.app/profile/busanilucas.bsky.social" target="_blank" rel="noopener">busanilucas ▶</a>
+            </span>
+          </div>
+          <div class="nier-data-row">
+            <span class="data-label">LinkedIn</span>
+            <span class="data-value">
+              <a class="nier-link" href="https://www.linkedin.com/in/lucas-busani-xavier/" target="_blank" rel="noopener">lucas-busani-xavier ▶</a>
+            </span>
+          </div>
+          <div class="nier-data-row">
+            <span class="data-label">X / Twitter</span>
+            <span class="data-value">
+              <a class="nier-link" href="https://x.com/BusaniLucas" target="_blank" rel="noopener">@BusaniLucas ▶</a>
+            </span>
+          </div>
+          <div class="nier-data-row" style="border-bottom:none;">
+            <span class="data-label">GitHub</span>
+            <span class="data-value">
+              <a class="nier-link" href="https://github.com/lucasbxvr" target="_blank" rel="noopener">lucasbxvr ▶</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Academic card -->
+      <div class="nier-inset">
+        <div class="nier-inset-header">
+          <span class="row-sq"></span>
+          <span data-t="en">ACADEMIC</span><span data-t="pt">ACADÊMICO</span>
+        </div>
+        <div class="nier-data-rows">
+          <div class="nier-data-row">
+            <span class="data-label">Scholar</span>
+            <span class="data-value">
+              <a class="nier-link" href="https://scholar.google.com/citations?user=tj7KivsAAAAJ&hl=pt-BR" target="_blank" rel="noopener">View profile ▶</a>
+            </span>
+          </div>
+          <div class="nier-data-row">
+            <span class="data-label">ORCID</span>
+            <span class="data-value">
+              <a class="nier-link" href="https://orcid.org/0000-0001-9869-0019" target="_blank" rel="noopener">0000-0001-9869-0019 ▶</a>
+            </span>
+          </div>
+          <div class="nier-data-row" style="border-bottom:none;">
+            <span class="data-label">ResearchGate</span>
+            <span class="data-value">
+              <a class="nier-link" href="https://www.researchgate.net/profile/Lucas_Xavier13?ev=hdr_xprf" target="_blank" rel="noopener">Lucas Xavier ▶</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Affiliation card -->
+      <div class="nier-inset">
+        <div class="nier-inset-header">
+          <span class="row-sq"></span>
+          <span data-t="en">AFFILIATION</span><span data-t="pt">AFILIAÇÃO</span>
+        </div>
+        <div class="nier-data-rows">
+          <div class="nier-data-row">
+            <span class="data-label">
+              <span data-t="en">Title</span><span data-t="pt">Título</span>
+            </span>
+            <span class="data-value">
+              <span data-t="en">PhD Candidate</span><span data-t="pt">Doutorando</span>
+            </span>
+          </div>
+          <div class="nier-data-row">
+            <span class="data-label">
+              <span data-t="en">School</span><span data-t="pt">Escola</span>
+            </span>
+            <span class="data-value">Schulich School of Business</span>
+          </div>
+          <div class="nier-data-row">
+            <span class="data-label">
+              <span data-t="en">University</span><span data-t="pt">Universidade</span>
+            </span>
+            <span class="data-value">York University</span>
+          </div>
+          <div class="nier-data-row">
+            <span class="data-label">
+              <span data-t="en">City</span><span data-t="pt">Cidade</span>
+            </span>
+            <span class="data-value">Toronto, CA</span>
+          </div>
+          <div class="nier-data-row" style="border-bottom:none;">
+            <span class="data-label">
+              <span data-t="en">Role</span><span data-t="pt">Papel</span>
+            </span>
+            <span class="data-value">
+              <span data-t="en">President, SPSA</span><span data-t="pt">Presidente, SPSA</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.contact-grid -->
+    <div class="nier-copyright">© <span class="yr"></span> Lucas Busani Xavier</div>
+  </div><!-- /.nier-single-panel -->
+
+  <!-- Dot strip bottom -->
+  <div class="dot-strip" id="dot-bottom"></div>
+
+  <!-- Status bar -->
+  <div class="nier-statusbar" role="contentinfo">
+    <div class="status-bar-block" aria-hidden="true"></div>
+    <span>© <span class="yr"></span> Lucas B. Xavier · lucasbxavier.github.io</span>
+  </div>
+
+</div><!-- /.nier-shell -->
 <script src="js/main.js"></script>
-<script>document.querySelectorAll('.yr').forEach(e=>e.textContent=new Date().getFullYear())</script>
 </body>
 </html>

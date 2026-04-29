@@ -1,137 +1,160 @@
 <!doctype html>
-<html lang="en" data-lang="en">
+<html lang="en" data-lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>(function(){var t=localStorage.getItem('nier-theme')||'light',l=localStorage.getItem('lbx-lang')||'en';document.documentElement.dataset.theme=t;document.documentElement.setAttribute('data-lang',l);document.documentElement.setAttribute('lang',l==='pt'?'pt-BR':'en');})()</script>
   <title>Hello, World — Blog · Lucas B. Xavier</title>
   <meta name="description" content="A short introduction to what this blog space will be about." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23282a36'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='monospace' fill='%23bd93f9'>L</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%233A3530'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='monospace' fill='%23C9C3AB'>L</text></svg>">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-<div class="app" id="app">
+<div class="nier-shell">
 
-  <!-- ── Title bar ── -->
-  <header class="titlebar" role="banner">
-    <span class="title">
-      <a href="../index.html" style="color:inherit; text-decoration:none">lucasbxavier.com</a>
-      <span class="muted"> / </span>
-      <a href="index.html" style="color:inherit; text-decoration:none">blog</a>
-      <span class="muted"> / </span>
-      <span data-t="en">hello-world</span><span data-t="pt">ola-mundo</span>
-    </span>
-    <span class="spacer"></span>
-    <span class="muted theme-label">Dracula | Monospace</span>
-    <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+  <!-- Dot strip top -->
+  <div class="dot-strip" id="dot-top"></div>
+
+  <!-- Nav bar -->
+  <nav class="nier-nav" aria-label="Primary navigation">
+    <a class="nier-nav-item" href="../index.html">
+      <span class="nav-glyph">◆</span> PROFILE
+    </a>
+    <a class="nier-nav-item active" href="index.html">
+      <span class="nav-glyph">◀</span> BLOG <span class="nav-glyph">▶</span>
+    </a>
+    <a class="nier-nav-item" href="../contact.html">
+      <span class="nav-glyph">◆</span> CONTACT
+    </a>
+    <div class="nav-controls">
       <button class="lang-btn active" data-lang-target="en" aria-pressed="true">EN</button>
+      <span class="nav-sep" aria-hidden="true">·</span>
       <button class="lang-btn" data-lang-target="pt" aria-pressed="false">PT</button>
+      <span class="nav-sep" aria-hidden="true">|</span>
+      <span class="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme">◐</span>
     </div>
-  </header>
-
-  <!-- ── Sidebar ── -->
-  <nav class="sidebar" id="sidebar" aria-label="Primary navigation">
-    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M3 6h18v2H3V6Zm0 5h18v2H3v-2Zm0 5h18v2H3v-2Z"/>
-      </svg>
-      <span class="toggle-label muted">Menu</span>
-    </button>
-
-    <a class="nav-item" href="../index.html" aria-label="Home">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M12 2 2 9h2v11h6V14h4v6h6V9h2z"/>
-      </svg>
-      <span class="nav-label"><span data-t="en">Home</span><span data-t="pt">Início</span></span>
-    </a>
-
-    <a class="nav-item active" href="index.html" aria-label="Blog">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25ZM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83Z"/>
-      </svg>
-      <span class="nav-label">Blog</span>
-    </a>
-
-    <a class="nav-item" href="../contact.html" aria-label="Contact">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/>
-      </svg>
-      <span class="nav-label"><span data-t="en">Contact</span><span data-t="pt">Contato</span></span>
-    </a>
   </nav>
 
-  <!-- ── Main ── -->
-  <div class="main">
-    <div class="scroller" id="scroller">
-      <section class="editor" id="post">
-        <div class="content">
-          <div class="panel">
-
-            <a class="post-back" href="index.html">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M15 18l-6-6 6-6"/></svg>
-              <span data-t="en">Back to blog</span><span data-t="pt">Voltar ao blog</span>
-            </a>
-
-            <!-- EN -->
-            <div data-t="en">
-              <h1>Hello, World — Why I Started This Blog</h1>
-              <div class="post-meta">
-                <span>2025-02-19</span>
-                <span class="tag">Meta</span>
-              </div>
-              <div class="post-content">
-                <p>I've been meaning to start a blog for a while. The usual reasons apply: I think out loud, and writing forces clarity. But there's a more specific motivation that pushed me to finally set this up.</p>
-                <p>Most of what I work on — consumer culture, video games, affordances, the strange materiality of digital things — doesn't fit neatly into a tweet or a conference abstract. There's a lot of messy middle ground between "I'm reading something interesting" and "here is a published paper." This blog is for that middle ground.</p>
-                <h2>What you'll find here</h2>
-                <p>Expect a mix of:</p>
-                <ul>
-                  <li>Notes on papers I'm reading and ideas they're sparking</li>
-                  <li>Reflections on the research process itself</li>
-                  <li>Occasional writing on games and technology aimed at a broader audience</li>
-                  <li>Updates on ongoing projects (in a less formal register than conference abstracts)</li>
-                </ul>
-                <p>I'll write some posts in English, some in Portuguese — depending on who I imagine reading them. The language toggle at the top will let you switch between full translations when both exist.</p>
-                <h2>A note on regularity</h2>
-                <p>I'm not going to promise a posting schedule. Academic life is unpredictable, and performative productivity is something I try to resist. Posts will appear when they're ready.</p>
-                <p>That said — if you find something here useful or want to discuss it, reach out. The <a href="../contact.html">contact page</a> has the details.</p>
-              </div>
-            </div>
-
-            <!-- PT -->
-            <div data-t="pt">
-              <h1>Olá, Mundo — Por que comecei este blog</h1>
-              <div class="post-meta">
-                <span>2025-02-19</span>
-                <span class="tag">Meta</span>
-              </div>
-              <div class="post-content">
-                <p>Faz um tempo que eu queria começar um blog. Os motivos habituais se aplicam: eu penso em voz alta, e escrever impõe clareza. Mas havia uma motivação mais específica que me fez finalmente colocar isso em prática.</p>
-                <p>A maior parte do que eu trabalho — cultura de consumo, videogames, affordances, a estranha materialidade das coisas digitais — não cabe bem num tweet nem num resumo de congresso. Há muito espaço intermediário entre "estou lendo algo interessante" e "aqui está um artigo publicado." Este blog é para esse espaço intermediário.</p>
-                <h2>O que você vai encontrar aqui</h2>
-                <p>Espere uma mistura de:</p>
-                <ul>
-                  <li>Notas sobre artigos que estou lendo e as ideias que eles estão gerando</li>
-                  <li>Reflexões sobre o próprio processo de pesquisa</li>
-                  <li>Textos eventuais sobre jogos e tecnologia para um público mais amplo</li>
-                  <li>Atualizações sobre projetos em andamento (num registro menos formal do que resumos de conferências)</li>
-                </ul>
-                <p>Escreverei alguns posts em inglês, outros em português — dependendo de quem imagino estar lendo. O botão de idioma no topo permitirá alternar entre traduções completas quando ambas existirem.</p>
-                <h2>Uma nota sobre regularidade</h2>
-                <p>Não vou prometer uma frequência de publicações. A vida acadêmica é imprevisível, e a produtividade performática é algo que tento resistir. Os posts aparecerão quando estiverem prontos.</p>
-                <p>Dito isso — se você encontrar algo aqui útil ou quiser discutir, entre em contato. A <a href="../contact.html">página de contato</a> tem os detalhes.</p>
-              </div>
-            </div>
-
-            <div class="footer">© <span id="y"></span> Lucas Busani Xavier</div>
-          </div>
-        </div>
-      </section>
+  <!-- Title bar -->
+  <div class="nier-title-bar">
+    <div class="nier-page-title">
+      <span data-t="en">HELLO, WORLD</span><span data-t="pt">OLÁ, MUNDO</span>
     </div>
+    <div class="nier-page-subtitle">-Date: 2025-02-19 · Meta</div>
   </div>
 
-</div>
+  <!-- Body -->
+  <div class="nier-body">
+
+    <!-- Left panel: back link only -->
+    <div class="nier-panel-left">
+      <div class="nier-selector-row">
+        <span data-t="en">ENTRY DATA</span><span data-t="pt">DADOS DA ENTRADA</span>
+      </div>
+      <a class="nier-menu-row" href="index.html">
+        <span class="row-sq"></span>
+        <span data-t="en">◀ Back to Blog</span><span data-t="pt">◀ Voltar</span>
+      </a>
+    </div>
+
+    <!-- Divider -->
+    <div class="nier-divider" aria-hidden="true"></div>
+
+    <!-- Right panel: post content -->
+    <div class="nier-panel-right">
+
+      <!-- Metadata panel -->
+      <div class="nier-inset">
+        <div class="nier-inset-header">
+          <span class="row-sq"></span>
+          <span data-t="en">ENTRY DATA</span><span data-t="pt">DADOS DA ENTRADA</span>
+        </div>
+        <div class="nier-data-rows">
+          <div class="nier-data-row">
+            <span class="data-label">
+              <span data-t="en">Date</span><span data-t="pt">Data</span>
+            </span>
+            <span class="data-value">2025-02-19</span>
+          </div>
+          <div class="nier-data-row">
+            <span class="data-label">Tags</span>
+            <span class="data-value">Meta</span>
+          </div>
+          <div class="nier-data-row" style="border-bottom:none;">
+            <span class="data-label">Status</span>
+            <span class="data-value accent">
+              <span data-t="en">Published</span><span data-t="pt">Publicado</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EN -->
+      <div data-t="en">
+        <div class="post-meta">
+          <span>2025-02-19</span>
+          <span class="post-tag">Meta</span>
+        </div>
+        <div class="post-content">
+          <p>I've been meaning to start a blog for a while. The usual reasons apply: I think out loud, and writing forces clarity. But there's a more specific motivation that pushed me to finally set this up.</p>
+          <p>Most of what I work on — consumer culture, video games, affordances, the strange materiality of digital things — doesn't fit neatly into a tweet or a conference abstract. There's a lot of messy middle ground between "I'm reading something interesting" and "here is a published paper." This blog is for that middle ground.</p>
+          <h2>What you'll find here</h2>
+          <p>Expect a mix of:</p>
+          <ul>
+            <li>Notes on papers I'm reading and ideas they're sparking</li>
+            <li>Reflections on the research process itself</li>
+            <li>Occasional writing on games and technology aimed at a broader audience</li>
+            <li>Updates on ongoing projects (in a less formal register than conference abstracts)</li>
+          </ul>
+          <p>I'll write some posts in English, some in Portuguese — depending on who I imagine reading them. The language toggle at the bottom will let you switch between full translations when both exist.</p>
+          <h2>A note on regularity</h2>
+          <p>I'm not going to promise a posting schedule. Academic life is unpredictable, and performative productivity is something I try to resist. Posts will appear when they're ready.</p>
+          <p>That said — if you find something here useful or want to discuss it, reach out. The <a class="nier-link" href="../contact.html">contact page</a> has the details.</p>
+        </div>
+      </div>
+
+      <!-- PT -->
+      <div data-t="pt">
+        <div class="post-meta">
+          <span>2025-02-19</span>
+          <span class="post-tag">Meta</span>
+        </div>
+        <div class="post-content">
+          <p>Faz um tempo que eu queria começar um blog. Os motivos habituais se aplicam: eu penso em voz alta, e escrever impõe clareza. Mas havia uma motivação mais específica que me fez finalmente colocar isso em prática.</p>
+          <p>A maior parte do que eu trabalho — cultura de consumo, videogames, affordances, a estranha materialidade das coisas digitais — não cabe bem num tweet nem num resumo de congresso. Há muito espaço intermediário entre "estou lendo algo interessante" e "aqui está um artigo publicado." Este blog é para esse espaço intermediário.</p>
+          <h2>O que você vai encontrar aqui</h2>
+          <p>Espere uma mistura de:</p>
+          <ul>
+            <li>Notas sobre artigos que estou lendo e as ideias que eles estão gerando</li>
+            <li>Reflexões sobre o próprio processo de pesquisa</li>
+            <li>Textos eventuais sobre jogos e tecnologia para um público mais amplo</li>
+            <li>Atualizações sobre projetos em andamento (num registro menos formal do que resumos de conferências)</li>
+          </ul>
+          <p>Escreverei alguns posts em inglês, outros em português — dependendo de quem imagino estar lendo. O botão de idioma no rodapé permitirá alternar entre traduções completas quando ambas existirem.</p>
+          <h2>Uma nota sobre regularidade</h2>
+          <p>Não vou prometer uma frequência de publicações. A vida acadêmica é imprevisível, e a produtividade performática é algo que tento resistir. Os posts aparecerão quando estiverem prontos.</p>
+          <p>Dito isso — se você encontrar algo aqui útil ou quiser discutir, entre em contato. A <a class="nier-link" href="../contact.html">página de contato</a> tem os detalhes.</p>
+        </div>
+      </div>
+
+      <div class="nier-copyright">© <span class="yr"></span> Lucas Busani Xavier</div>
+
+    </div><!-- /.nier-panel-right -->
+  </div><!-- /.nier-body -->
+
+  <!-- Dot strip bottom -->
+  <div class="dot-strip" id="dot-bottom"></div>
+
+  <!-- Status bar -->
+  <div class="nier-statusbar" role="contentinfo">
+    <div class="status-bar-block" aria-hidden="true"></div>
+    <span>© <span class="yr"></span> Lucas B. Xavier · lucasbxavier.github.io</span>
+  </div>
+
+</div><!-- /.nier-shell -->
 <script src="../js/main.js"></script>
 </body>
 </html>
