@@ -753,3 +753,19 @@ body::after {
 
   .nier-single-panel { padding: 12px 16px 20px; }
 }
+
+/* ─── 26. Page Transitions ─── */
+@view-transition { navigation: auto; }
+
+::view-transition-old(root) {
+  animation: nier-fade-out 0.13s ease-out;
+}
+::view-transition-new(root) {
+  animation: nier-fade-in 0.13s ease-out;
+}
+@keyframes nier-fade-out {
+  to { opacity: 0; transform: translateY(3px); }
+}
+@keyframes nier-fade-in {
+  from { opacity: 0; transform: translateY(-3px); }
+}
