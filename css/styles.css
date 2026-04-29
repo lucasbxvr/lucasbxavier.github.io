@@ -217,7 +217,7 @@ body::after {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   color: var(--text-secondary);
   margin-bottom: 5px;
@@ -231,7 +231,7 @@ body::after {
   align-items: center;
   gap: 9px;
   padding: 8px 12px;
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 0.08em;
   border-bottom: 1px solid var(--border);
   cursor: pointer;
@@ -279,7 +279,7 @@ body::after {
   padding: 8px 14px;
   background: var(--bg-active);
   color: var(--text-on-active);
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 0.10em;
   border-bottom: 1px solid var(--border);
   text-transform: uppercase;
@@ -294,7 +294,7 @@ body::after {
   align-items: baseline;
   gap: 14px;
   padding: 6px 0;
-  font-size: 12px;
+  font-size: 13px;
   border-bottom: 1px solid var(--border);
 }
 .nier-data-row:last-child { border-bottom: none; }
@@ -332,7 +332,7 @@ body::after {
 }
 .nier-portrait-header {
   padding: 7px 12px;
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-on-active);
@@ -348,7 +348,7 @@ body::after {
   filter: sepia(0.75) saturate(0.75) brightness(0.95) contrast(1.0);
 }
 [data-theme="dark"] .nier-portrait img {
-  filter: sepia(0.75) saturate(0.75) brightness(0.95) contrast(1.0);
+  filter: sepia(0.75) saturate(0.6) brightness(0.6) contrast(1.1);
 }
 
 /* ─── 12. Profile triple layout (portrait + unit data + bio) ─── */
@@ -406,7 +406,7 @@ body::after {
   align-items: center;
   border: 1px solid var(--border-strong);
   padding: 4px 10px;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-primary);
@@ -510,7 +510,7 @@ body::after {
   background: var(--bg-row-odd);
   color: var(--text-primary);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   cursor: pointer;
   text-decoration: none;
@@ -520,6 +520,17 @@ body::after {
 .nier-btn:hover {
   background: var(--bg-active);
   color: var(--text-on-active);
+  text-decoration: none;
+}
+.nier-btn-accent {
+  background: var(--text-accent);
+  color: var(--bg-base);
+  border-color: var(--text-accent);
+}
+.nier-btn-accent:hover {
+  background: var(--bg-active);
+  color: var(--text-on-active);
+  border-color: var(--bg-active);
   text-decoration: none;
 }
 
@@ -627,7 +638,7 @@ body::after {
   background: var(--bg-row-odd);
   padding: 1px 5px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-accent);
 }
 
@@ -636,7 +647,7 @@ body::after {
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.10em;
   color: var(--text-secondary);
   margin-bottom: 1.2rem;
@@ -645,7 +656,7 @@ body::after {
 .post-tag {
   padding: 2px 7px;
   border: 1px solid var(--border);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.10em;
   color: var(--text-secondary);
 }
@@ -653,7 +664,7 @@ body::after {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.10em;
   text-transform: uppercase;
   color: var(--text-secondary);
@@ -665,7 +676,7 @@ body::after {
 
 /* ─── 22. Copyright ─── */
 .nier-copyright {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--text-muted);
   padding-top: 14px;
@@ -690,9 +701,75 @@ body::after {
 .side-project .nier-inset-header .row-sq { background: var(--bg-base); }
 .side-project { border-color: var(--border); }
 
-/* ─── 25. Mobile (<768px) ─── */
+/* ─── 25. Blog grid (2-column) ─── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+.blog-grid > .nier-inset { margin-bottom: 0; }
+
+/* ─── 25b. Blog post cards ─── */
+.blog-card-title {
+  color: var(--text-on-active);
+  text-decoration: none;
+  flex: 1;
+  min-width: 0;
+}
+.blog-card-title:hover { text-decoration: underline; }
+.blog-card-meta {
+  padding: 7px 14px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  background: var(--bg-row-odd);
+}
+.blog-card-sep { color: var(--text-muted); }
+.blog-card-excerpt {
+  padding: 10px 14px;
+  font-size: 13px;
+  line-height: 1.65;
+  letter-spacing: 0.03em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.blog-card-footer {
+  padding: 8px 14px;
+  display: flex;
+  justify-content: flex-end;
+  background: var(--bg-row-even);
+}
+
+/* ─── 26. Mobile section select (desktop hidden) ─── */
+.mobile-section-select { display: none; }
+
+/* ─── 27. Mobile (<768px) ─── */
 @media (max-width: 767px) {
-  html { font-size: 12px; }
+  html { font-size: 13px; }
+
+  /* Nav: wrap to two rows so controls always visible */
+  .nier-nav {
+    overflow-x: visible;
+    flex-wrap: wrap;
+  }
+  .nav-controls {
+    width: 100%;
+    margin-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    justify-content: center;
+    padding: 6px 14px;
+  }
 
   .nier-body {
     display: flex;
@@ -701,60 +778,37 @@ body::after {
   }
   .nier-divider { display: none; }
 
+  /* Left panel: block layout; nav-only panels hidden entirely */
   .nier-panel-left {
     padding: 0;
     border-bottom: 1px solid var(--border);
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    scrollbar-width: none;
-    gap: 0;
+    display: block;
     position: static;
   }
-  .nier-panel-left::-webkit-scrollbar { display: none; }
+  .nier-panel-left--nav { display: none; }
   .nier-selector-row { display: none; }
+  .nier-menu-row { display: none !important; }
 
-  .nier-menu-row {
-    flex-shrink: 0;
-    border-bottom: none !important;
-    border-top: none !important;
-    border-right: 1px solid var(--border) !important;
-    white-space: nowrap;
-    padding: 9px 16px;
-    width: auto;
-  }
-  .nier-menu-row:nth-child(odd)  { background: var(--bg-row-odd); }
-  .nier-menu-row:nth-child(even) { background: var(--bg-row-even); }
+  .blog-grid { grid-template-columns: 1fr; }
 
   .nier-panel-right { padding: 12px 16px 20px; }
 
   .profile-triple {
     flex-direction: column;
   }
-  .profile-portrait-col { width: 100%; max-width: 220px; }
+  .profile-portrait-col { width: 100%; max-width: 100%; }
   .profile-unit-col { width: 100%; }
   .profile-portrait-col .nier-portrait { height: auto; }
 
   .nier-statusbar { padding: 7px 16px; }
-  .nav-controls { padding: 0 10px; gap: 5px; }
   .research-grid { grid-template-columns: 1fr; }
-
-  .post-list-item {
-    flex-shrink: 0;
-    border-bottom: none !important;
-    border-top: none !important;
-    border-right: 1px solid var(--border);
-    width: auto;
-    white-space: nowrap;
-  }
-  .post-item-date { display: none; }
 
   .contact-grid { grid-template-columns: 1fr; }
 
   .nier-single-panel { padding: 12px 16px 20px; }
 }
 
-/* ─── 26. Page Transitions ─── */
+/* ─── 28. Page Transitions ─── */
 @view-transition { navigation: auto; }
 
 ::view-transition-old(root) {

@@ -128,5 +128,34 @@ if (copyBtn) {
   })
 }
 
+// ── Mobile section select ──
+;(function () {
+  const sel = document.querySelector('.mobile-section-select')
+  if (!sel) return
+
+  // Scroll to section on change
+  sel.addEventListener('change', () => {
+    const target = document.querySelector(sel.value)
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  })
+
+  // Update option labels when language changes
+  function updateSelectLang(lang) {
+    sel.querySelectorAll('option').forEach(opt => {
+      const label = opt.dataset[lang]
+      if (label) opt.textContent = label
+    })
+  }
+
+  // Observe lang changes on <html>
+  const observer = new MutationObserver(() => {
+    updateSelectLang(document.documentElement.getAttribute('data-lang') || 'en')
+  })
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-lang'] })
+
+  // Set initial lang
+  updateSelectLang(document.documentElement.getAttribute('data-lang') || 'en')
+})()
+
 // ── Copyright year ──
 document.querySelectorAll('.yr').forEach(el => el.textContent = new Date().getFullYear())

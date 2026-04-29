@@ -48,111 +48,99 @@
     </div>
   </div>
 
-  <!-- Body -->
-  <div class="nier-body">
+  <!-- Single-panel content -->
+  <div class="nier-single-panel">
 
-    <!-- Left panel: post list -->
-    <div class="nier-panel-left" role="navigation" aria-label="Posts">
-      <div class="nier-selector-row">
-        <span data-t="en">SELECT ENTRY</span><span data-t="pt">ENTRADA</span>
+    <!-- Post cards (2-column grid) -->
+    <div class="blog-grid">
+
+      <article class="nier-inset">
+        <div class="nier-inset-header">
+          <span class="row-sq"></span>
+          <a class="blog-card-title" href="realismo-tragico-comico.html">
+            <span data-t="en">The Tragic-Comic Realism of AI</span>
+            <span data-t="pt">O Realismo Trágico-Cômico das IAs</span>
+          </a>
+        </div>
+        <div class="blog-card-meta">
+          <span>2025-02-19</span>
+          <span class="blog-card-sep">·</span>
+          <span data-t="en">Technology · AI · Society</span>
+          <span data-t="pt">Tecnologia · IA · Sociedade</span>
+        </div>
+        <div class="blog-card-excerpt">
+          <span data-t="en">No AI will steal your job if it's already devalued enough. A reflection on technological imaginaries, Silicon Valley ideology, and who is really threatened by LLMs.</span>
+          <span data-t="pt">Nenhuma IA vai roubar o seu trabalho se ele já for desvalorizado o suficiente. Uma reflexão sobre imaginários tecnológicos, a ideologia do Vale do Silício e quem realmente está ameaçado pelos LLMs.</span>
+        </div>
+        <div class="blog-card-footer">
+          <a href="realismo-tragico-comico.html" class="nier-btn nier-btn-accent">
+            <span data-t="en">OPEN →</span>
+            <span data-t="pt">ABRIR →</span>
+          </a>
+        </div>
+      </article>
+
+      <article class="nier-inset">
+        <div class="nier-inset-header">
+          <span class="row-sq"></span>
+          <a class="blog-card-title" href="hello-world.html">
+            <span data-t="en">Hello, World — Why I Started This Blog</span>
+            <span data-t="pt">Olá, Mundo — Por que comecei este blog</span>
+          </a>
+        </div>
+        <div class="blog-card-meta">
+          <span>2025-02-19</span>
+          <span class="blog-card-sep">·</span>
+          <span data-t="en">Meta</span>
+          <span data-t="pt">Meta</span>
+        </div>
+        <div class="blog-card-excerpt">
+          <span data-t="en">Why I started this blog, what I intend to write about, and why academic life pushed me toward public writing.</span>
+          <span data-t="pt">Por que comecei este blog, sobre o que pretendo escrever, e por que a vida acadêmica me empurrou em direção à escrita pública.</span>
+        </div>
+        <div class="blog-card-footer">
+          <a href="hello-world.html" class="nier-btn nier-btn-accent">
+            <span data-t="en">OPEN →</span>
+            <span data-t="pt">ABRIR →</span>
+          </a>
+        </div>
+      </article>
+
+    </div><!-- /.blog-grid -->
+
+    <!-- Blog overview at bottom -->
+    <div class="nier-inset">
+      <div class="nier-inset-header">
+        <span class="row-sq"></span>
+        <span data-t="en">BLOG LOG — OVERVIEW</span>
+        <span data-t="pt">LOG — VISÃO GERAL</span>
       </div>
-
-      <!-- Add newest posts at top -->
-      <a class="post-list-item" href="realismo-tragico-comico.html">
-        <span class="row-sq"></span>
-        <span>
-          <span data-t="en">The Tragic-Comic Realism of AI</span>
-          <span data-t="pt">O Realismo Trágico-Cômico das IAs</span>
-          <span class="post-item-date">2025-02-19</span>
-        </span>
-      </a>
-      <a class="post-list-item" href="hello-world.html">
-        <span class="row-sq"></span>
-        <span>
-          <span data-t="en">Hello, World — Why I Started This Blog</span>
-          <span data-t="pt">Olá, Mundo — Por que comecei este blog</span>
-          <span class="post-item-date">2025-02-19</span>
-        </span>
-      </a>
+      <div class="nier-data-rows">
+        <div class="nier-data-row">
+          <span class="data-label">
+            <span data-t="en">Entries</span><span data-t="pt">Entradas</span>
+          </span>
+          <span class="data-value">2</span>
+        </div>
+        <div class="nier-data-row">
+          <span class="data-label">
+            <span data-t="en">Languages</span><span data-t="pt">Idiomas</span>
+          </span>
+          <span class="data-value">EN · PT</span>
+        </div>
+        <div class="nier-data-row" style="border-bottom:none;">
+          <span class="data-label">
+            <span data-t="en">Topics</span><span data-t="pt">Tópicos</span>
+          </span>
+          <span class="data-value">
+            <span data-t="en">Consumer culture · Technology · Games · Academic life</span>
+            <span data-t="pt">Cultura de consumo · Tecnologia · Jogos · Vida acadêmica</span>
+          </span>
+        </div>
+      </div>
     </div>
 
-    <!-- Divider -->
-    <div class="nier-divider" aria-hidden="true"></div>
-
-    <!-- Right panel: log overview -->
-    <div class="nier-panel-right">
-
-      <div class="nier-inset">
-        <div class="nier-inset-header">
-          <span class="row-sq"></span>
-          <span data-t="en">BLOG LOG — OVERVIEW</span>
-          <span data-t="pt">LOG — VISÃO GERAL</span>
-        </div>
-        <div class="nier-data-rows">
-          <div class="nier-data-row">
-            <span class="data-label">
-              <span data-t="en">Entries</span><span data-t="pt">Entradas</span>
-            </span>
-            <span class="data-value">2</span>
-          </div>
-          <div class="nier-data-row">
-            <span class="data-label">
-              <span data-t="en">Languages</span><span data-t="pt">Idiomas</span>
-            </span>
-            <span class="data-value">EN · PT</span>
-          </div>
-          <div class="nier-data-row" style="border-bottom:none;">
-            <span class="data-label">
-              <span data-t="en">Topics</span><span data-t="pt">Tópicos</span>
-            </span>
-            <span class="data-value">
-              <span data-t="en">Consumer culture · Technology · Games · Academic life</span>
-              <span data-t="pt">Cultura de consumo · Tecnologia · Jogos · Vida acadêmica</span>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Latest entry preview -->
-      <div class="nier-inset">
-        <div class="nier-inset-header">
-          <span class="row-sq"></span>
-          <span data-t="en">LATEST ENTRY — 2025-02-19</span>
-          <span data-t="pt">ENTRADA MAIS RECENTE — 2025-02-19</span>
-        </div>
-        <div class="nier-data-rows">
-          <div class="nier-data-row">
-            <span class="data-label">
-              <span data-t="en">Title</span><span data-t="pt">Título</span>
-            </span>
-            <span class="data-value">
-              <a class="nier-link" href="realismo-tragico-comico.html">
-                <span data-t="en">The Tragic-Comic Realism of AI</span>
-                <span data-t="pt">O Realismo Trágico-Cômico das IAs</span>
-              </a>
-            </span>
-          </div>
-          <div class="nier-data-row">
-            <span class="data-label">Tags</span>
-            <span class="data-value">
-              <span data-t="en">Technology · AI · Society</span>
-              <span data-t="pt">Tecnologia · IA · Sociedade</span>
-            </span>
-          </div>
-          <div class="nier-data-row col" style="border-bottom:none;">
-            <span class="data-label">
-              <span data-t="en">Excerpt</span><span data-t="pt">Trecho</span>
-            </span>
-            <span class="data-value" style="text-align:left;">
-              <span data-t="en">No AI will steal your job if it's already devalued enough. A reflection on technological imaginaries, Silicon Valley ideology, and who is really threatened by LLMs.</span>
-              <span data-t="pt">Nenhuma IA vai roubar o seu trabalho se ele já for desvalorizado o suficiente. Uma reflexão sobre imaginários tecnológicos, a ideologia do Vale do Silício e quem realmente está ameaçado pelos LLMs.</span>
-            </span>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /.nier-panel-right -->
-  </div><!-- /.nier-body -->
+  </div><!-- /.nier-single-panel -->
 
   <!-- Dot strip bottom -->
   <div class="dot-strip" id="dot-bottom"></div>

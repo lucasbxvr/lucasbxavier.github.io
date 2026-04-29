@@ -43,7 +43,7 @@
   <div class="nier-title-bar">
     <div class="nier-page-title">PROFILE</div>
     <div class="nier-page-subtitle">
-      -Unit: Lucas B. Xavier ·
+      -Unit: <span class="accent">Lucas B. Xavier</span> ·
       <span data-t="en">PhD Candidate, Marketing</span><span data-t="pt">Doutorando, Marketing</span>
     </div>
   </div>
@@ -52,10 +52,21 @@
   <div class="nier-body">
 
     <!-- Left panel: anchor navigation -->
-    <div class="nier-panel-left" role="navigation" aria-label="Sections">
+    <div class="nier-panel-left nier-panel-left--nav" role="navigation" aria-label="Sections">
       <div class="nier-selector-row">
         <span data-t="en">SELECT SECTION</span><span data-t="pt">SELECIONE</span>
       </div>
+
+      <!-- Mobile-only native dropdown -->
+      <select class="mobile-section-select" aria-label="Select section">
+        <option value="#section-about" data-en="◆ ABOUT" data-pt="◆ SOBRE">◆ ABOUT</option>
+        <option value="#section-presentations" data-en="◆ PRESENTATIONS" data-pt="◆ APRESENTAÇÕES">◆ PRESENTATIONS</option>
+        <option value="#section-research" data-en="◆ RESEARCH" data-pt="◆ PESQUISA">◆ RESEARCH</option>
+        <option value="#section-publications" data-en="◆ PUBLICATIONS" data-pt="◆ PUBLICAÇÕES">◆ PUBLICATIONS</option>
+        <option value="#section-participate" data-en="◆ PARTICIPATE" data-pt="◆ PARTICIPE">◆ PARTICIPATE</option>
+        <option value="#section-side-projects" data-en="◆ SIDE PROJECTS" data-pt="◆ PROJETOS PARALELOS">◆ SIDE PROJECTS</option>
+      </select>
+
       <a class="nier-menu-row active" href="#section-about">
         <span class="row-sq"></span>
         <span data-t="en">About</span><span data-t="pt">Sobre</span>
@@ -91,19 +102,8 @@
       <!-- ═══ ABOUT ═══ -->
       <div class="nier-anchor-section" id="section-about">
 
-        <!-- Profile triple: portrait | unit data | bio -->
+        <!-- Profile triple: unit data | portrait | bio -->
         <div class="profile-triple">
-
-          <!-- Portrait -->
-          <div class="profile-portrait-col">
-            <div class="nier-portrait">
-              <div class="nier-portrait-header">
-                <span class="row-sq"></span>
-                <span data-t="en">UNIT IMG</span><span data-t="pt">IMG UNID.</span>
-              </div>
-              <img src="assets/lucas_profile.jpg" alt="Lucas B. Xavier">
-            </div>
-          </div>
 
           <!-- Unit data -->
           <div class="profile-unit-col">
@@ -152,6 +152,17 @@
                   </span>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <!-- Portrait -->
+          <div class="profile-portrait-col">
+            <div class="nier-portrait">
+              <div class="nier-portrait-header">
+                <span class="row-sq"></span>
+                <span data-t="en">UNIT IMG</span><span data-t="pt">IMG UNID.</span>
+              </div>
+              <img src="assets/lucas_profile.jpg" alt="Lucas B. Xavier">
             </div>
           </div>
 
