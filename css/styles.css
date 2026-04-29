@@ -373,7 +373,7 @@ body::after {
   min-height: 0;
 }
 .profile-unit-col {
-  width: 300px;
+  width: 320px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
