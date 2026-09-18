@@ -823,3 +823,47 @@ body::after {
 @keyframes nier-fade-in {
   from { opacity: 0; transform: translateY(-3px); }
 }
+
+/* ─── 29. Post media: figures & video embeds ─── */
+.post-figure,
+.post-embed {
+  margin: 1.4rem 0;
+  max-width: 720px;
+}
+.post-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+}
+[data-theme="dark"] .post-figure img { opacity: 0.88; }
+.post-figure figcaption,
+.post-embed figcaption {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-top: 6px;
+  font-style: italic;
+}
+.embed-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--border);
+  background: var(--bg-row-odd);
+}
+.embed-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.post-lede {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  border-left: 2px solid var(--border-strong);
+  padding-left: 14px;
+  margin-bottom: 1.4rem !important;
+}
